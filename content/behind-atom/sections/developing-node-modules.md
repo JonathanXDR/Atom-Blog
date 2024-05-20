@@ -1,6 +1,7 @@
 ---
 title: Developing Node Modules
 ---
+
 ### Developing Node Modules
 
 Atom contains a number of packages that are Node modules instead of Atom packages. If you want to make changes to the Node modules, for instance `atom-keymap`, you have to link them into the development environment differently than you would a normal Atom package.
@@ -10,7 +11,8 @@ Atom contains a number of packages that are Node modules instead of Atom package
 Here are the steps to run a local version of a Node module within Atom. We're using `atom-keymap` as an example:
 
 {{#windows}}
-``` command-line
+
+```command-line
 $ git clone https://github.com/atom/atom-keymap.git
 $ cd atom-keymap
 $ npm install
@@ -28,10 +30,12 @@ $ setx ATOM_DEV_RESOURCE_PATH=<em>WHERE YOU CLONED ATOM</em>
 # Should work!
 $ atom --dev .
 ```
+
 {{/windows}}
 
 {{#mac}}
-``` command-line
+
+```command-line
 $ git clone https://github.com/atom/atom-keymap.git
 $ cd atom-keymap
 $ npm install
@@ -49,10 +53,12 @@ $ export ATOM_DEV_RESOURCE_PATH=<em>WHERE YOU CLONED ATOM</em>
 # Should work!
 $ atom --dev .
 ```
+
 {{/mac}}
 
 {{#linux}}
-``` command-line
+
+```command-line
 $ git clone https://github.com/atom/atom-keymap.git
 $ cd atom-keymap
 $ npm install
@@ -70,11 +76,12 @@ $ export ATOM_DEV_RESOURCE_PATH=<em>WHERE YOU CLONED ATOM</em>
 # Should work!
 $ atom --dev .
 ```
+
 {{/linux}}
 
 After you get the Node module linked and working, every time you make a change to the Node module's code, you will have to exit Atom and do the following:
 
-``` command-line
+```command-line
 $ cd <em>WHERE YOU CLONED THE NODE MODULE</em>
 $ npm install
 $ cd <em>WHERE YOU CLONED ATOM</em>

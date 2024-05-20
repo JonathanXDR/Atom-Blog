@@ -11,9 +11,9 @@
  * @module
  */
 lunr.Store = function () {
-  this.store = {}
-  this.length = 0
-}
+  this.store = {};
+  this.length = 0;
+};
 
 /**
  * Loads a previously serialised store
@@ -23,16 +23,16 @@ lunr.Store = function () {
  * @memberOf Store
  */
 lunr.Store.load = function (serialisedData) {
-  var store = new this
+  var store = new this();
 
-  store.length = serialisedData.length
+  store.length = serialisedData.length;
   store.store = Object.keys(serialisedData.store).reduce(function (memo, key) {
-    memo[key] = lunr.SortedSet.load(serialisedData.store[key])
-    return memo
-  }, {})
+    memo[key] = lunr.SortedSet.load(serialisedData.store[key]);
+    return memo;
+  }, {});
 
-  return store
-}
+  return store;
+};
 
 /**
  * Stores the given tokens in the store against the given id.
@@ -42,9 +42,9 @@ lunr.Store.load = function (serialisedData) {
  * @memberOf Store
  */
 lunr.Store.prototype.set = function (id, tokens) {
-  if (!this.has(id)) this.length++
-  this.store[id] = tokens
-}
+  if (!this.has(id)) this.length++;
+  this.store[id] = tokens;
+};
 
 /**
  * Retrieves the tokens from the store for a given key.
@@ -54,8 +54,8 @@ lunr.Store.prototype.set = function (id, tokens) {
  * @memberOf Store
  */
 lunr.Store.prototype.get = function (id) {
-  return this.store[id]
-}
+  return this.store[id];
+};
 
 /**
  * Checks whether the store contains a key.
@@ -65,8 +65,8 @@ lunr.Store.prototype.get = function (id) {
  * @memberOf Store
  */
 lunr.Store.prototype.has = function (id) {
-  return id in this.store
-}
+  return id in this.store;
+};
 
 /**
  * Removes the value for a key in the store.
@@ -75,11 +75,11 @@ lunr.Store.prototype.has = function (id) {
  * @memberOf Store
  */
 lunr.Store.prototype.remove = function (id) {
-  if (!this.has(id)) return
+  if (!this.has(id)) return;
 
-  delete this.store[id]
-  this.length--
-}
+  delete this.store[id];
+  this.length--;
+};
 
 /**
  * Returns a representation of the store ready for serialisation.
@@ -90,7 +90,6 @@ lunr.Store.prototype.remove = function (id) {
 lunr.Store.prototype.toJSON = function () {
   return {
     store: this.store,
-    length: this.length
-  }
-}
-
+    length: this.length,
+  };
+};

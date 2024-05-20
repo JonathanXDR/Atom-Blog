@@ -1,6 +1,7 @@
 ---
 title: Glossary
 ---
+
 ### Glossary
 
 Below is a list of some useful terms we use with regard to Atom.
@@ -19,9 +20,9 @@ Docks are collapsible [pane containers](#pane-container) that attach to the left
 
 Examples:
 
-* Tree View
-* Git
-* GitHub
+- Tree View
+- Git
+- GitHub
 
 #### Key Combination
 
@@ -29,9 +30,9 @@ A key combination is some combination or sequence of keys that are pressed to pe
 
 Examples:
 
-* <kbd class="platform-all">A</kbd>
-* <kbd class="platform-all">Ctrl+Enter</kbd>
-* <kbd class="platform-all">Ctrl+K</kbd> <kbd class="platform-all">Right</kbd>
+- <kbd class="platform-all">A</kbd>
+- <kbd class="platform-all">Ctrl+Enter</kbd>
+- <kbd class="platform-all">Ctrl+K</kbd> <kbd class="platform-all">Right</kbd>
 
 #### Key Sequence
 
@@ -73,5 +74,5 @@ A piece of the Atom UI that is outside the editor space.
 
 Examples:
 
-* Find and Replace
-* Keybinding Resolver
+- Find and Replace
+- Keybinding Resolver

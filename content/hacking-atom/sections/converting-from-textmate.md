@@ -1,6 +1,7 @@
 ---
 title: Converting from TextMate
 ---
+
 ### Converting from TextMate
 
 It's possible that you have themes or grammars from [TextMate](https://macromates.com) that you like and use and would like to convert to Atom. If so, you're in luck because there are tools to help with the conversion.
@@ -9,11 +10,11 @@ It's possible that you have themes or grammars from [TextMate](https://macromate
 
 Converting a TextMate bundle will allow you to use its editor preferences, snippets, and colorization inside Atom.
 
-Let's convert the TextMate bundle for the [R](https://en.wikipedia.org/wiki/R_(programming_language)) programming language. You can find other existing TextMate bundles [on GitHub](https://github.com/textmate).
+Let's convert the TextMate bundle for the [R](<https://en.wikipedia.org/wiki/R_(programming_language)>) programming language. You can find other existing TextMate bundles [on GitHub](https://github.com/textmate).
 
 You can convert the R bundle with the following command:
 
-``` command-line
+```command-line
 $ apm init --package language-r --convert https://github.com/textmate/r.tmbundle
 ```
 
@@ -36,7 +37,7 @@ Download the theme you wish to convert, you can browse existing TextMate themes 
 
 Now, let's say you've downloaded the theme to `~/Downloads/MyTheme.tmTheme`, you can convert the theme with the following command:
 
-``` command-line
+```command-line
 $ apm init --theme my-theme --convert ~/Downloads/MyTheme.tmTheme
 ```
 

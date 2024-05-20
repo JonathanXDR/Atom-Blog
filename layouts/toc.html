@@ -1,4 +1,4 @@
-<!DOCTYPE HTML>
+<!doctype html>
 <html lang="en">
   <head>
     <%= renderp '/includes/meta.html' %>
@@ -8,9 +8,7 @@
       <%= renderp '/includes/top_bar.html' %>
       <div class="wrapper documents content-push">
         <%= renderp '/includes/search.html' %>
-        <div class="markdown-body">
-          <%= yield %>
-        </div>
+        <div class="markdown-body"><%= yield %></div>
       </div>
       <div class="footer-pad"></div>
     </div>

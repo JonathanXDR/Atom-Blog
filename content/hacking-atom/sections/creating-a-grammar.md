@@ -1,6 +1,7 @@
 ---
 title: Creating a Grammar
 ---
+
 ### Creating a Grammar
 
 Atom's syntax highlighting and code folding system is powered by [Tree-sitter](http://tree-sitter.github.io/tree-sitter). Tree-sitter parsers create and maintain full [_syntax trees_](https://en.wikipedia.org/wiki/Abstract_syntax_tree) representing your code.
@@ -66,22 +67,22 @@ type: 'tree-sitter'
 parser: 'tree-sitter-mylanguage'
 ```
 
-* `scopeName` - A unique, stable identifier for the language. Atom users will use this in configuration files if they want to specify custom configuration based on the language.
-* `name` - A human readable name for the language.
-* `parser` - The name of the parser node module that will be used for parsing. This string will be passed directly to [`require()`](https://nodejs.org/api/modules.html#modules_require) in order to load the parser.
-* `type` - This should have the value `tree-sitter` to indicate to Atom that this is a Tree-sitter grammar and not a [TextMate grammar](../creating-a-legacy-textmate-grammar).
+- `scopeName` - A unique, stable identifier for the language. Atom users will use this in configuration files if they want to specify custom configuration based on the language.
+- `name` - A human readable name for the language.
+- `parser` - The name of the parser node module that will be used for parsing. This string will be passed directly to [`require()`](https://nodejs.org/api/modules.html#modules_require) in order to load the parser.
+- `type` - This should have the value `tree-sitter` to indicate to Atom that this is a Tree-sitter grammar and not a [TextMate grammar](../creating-a-legacy-textmate-grammar).
 
 #### Language Recognition
 
-Next, the file should contain some fields that indicate to Atom *when* this language should be used. These fields are all optional.
+Next, the file should contain some fields that indicate to Atom _when_ this language should be used. These fields are all optional.
 
-* `fileTypes` - An array of filename _suffixes_. The grammar will be used for files whose names end with one of these suffixes. Note that the suffix may be an entire filename.
-* `firstLineRegex` - A regex pattern that will be tested against the first line of the file. The grammar will be used if this regex matches.
-* `contentRegex` - A regex pattern that will be tested against the contents of the file in order to break ties in cases where *multiple* grammars matched the file using the above two criteria. If the `contentRegex` matches, this grammar will be preferred over another grammar with no `contentRegex`. If the `contentRegex` does *not* match, a grammar with no `contentRegex` will be preferred over this one.
+- `fileTypes` - An array of filename _suffixes_. The grammar will be used for files whose names end with one of these suffixes. Note that the suffix may be an entire filename.
+- `firstLineRegex` - A regex pattern that will be tested against the first line of the file. The grammar will be used if this regex matches.
+- `contentRegex` - A regex pattern that will be tested against the contents of the file in order to break ties in cases where _multiple_ grammars matched the file using the above two criteria. If the `contentRegex` matches, this grammar will be preferred over another grammar with no `contentRegex`. If the `contentRegex` does _not_ match, a grammar with no `contentRegex` will be preferred over this one.
 
 #### Syntax Highlighting
 
-The HTML classes that Atom uses for syntax highlighting do not correspond directly to nodes in the syntax tree. Instead, Tree-sitter grammar files specify *scope mappings* that specify which classes should be applied to which syntax nodes. The `scopes` object controls these scope mappings. Its keys are CSS selectors that select nodes in the syntax tree. Its values can be of several different types.
+The HTML classes that Atom uses for syntax highlighting do not correspond directly to nodes in the syntax tree. Instead, Tree-sitter grammar files specify _scope mappings_ that specify which classes should be applied to which syntax nodes. The `scopes` object controls these scope mappings. Its keys are CSS selectors that select nodes in the syntax tree. Its values can be of several different types.
 
 Here is a simple example:
 
@@ -114,7 +115,7 @@ scopes:
   'singleton_method > identifier:nth-child(3)': 'entity.name.function'
 ```
 
-Finally, you can use double-quoted strings in the selectors to select *anonymous* tokens in the syntax tree, like `(` and `:`. See [the Tree-sitter documentation](http://tree-sitter.github.io/tree-sitter/using-parsers#named-vs-anonymous-nodes) for more information about named vs anonymous tokens.
+Finally, you can use double-quoted strings in the selectors to select _anonymous_ tokens in the syntax tree, like `(` and `:`. See [the Tree-sitter documentation](http://tree-sitter.github.io/tree-sitter/using-parsers#named-vs-anonymous-nodes) for more information about named vs anonymous tokens.
 
 ```coffee
 scopes:
@@ -153,14 +154,14 @@ scopes:
 
 In total there are four types of values that can be associated with selectors in `scopes`:
 
-* Strings - Each class name in the dot-separated string will be prefixed with `syntax--` and applied to the selected node.
-* Objects with the keys `exact` and `scopes` - If the node's text equals the `exact` string, the `scopes` string will be used as described above.
-* Objects with the keys `match` and `scopes` - If the node's text matches the `match` regex pattern, the `scopes` string will be used as described above.
-* Arrays - The elements of the array will be processed from beginning to end. The first element that matches the selected node will be used as describe above.
+- Strings - Each class name in the dot-separated string will be prefixed with `syntax--` and applied to the selected node.
+- Objects with the keys `exact` and `scopes` - If the node's text equals the `exact` string, the `scopes` string will be used as described above.
+- Objects with the keys `match` and `scopes` - If the node's text matches the `match` regex pattern, the `scopes` string will be used as described above.
+- Arrays - The elements of the array will be processed from beginning to end. The first element that matches the selected node will be used as describe above.
 
 ##### Specificity
 
-If multiple selectors in the `scopes` object match a node, the node's classes will be decided based on the [most specific](https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity) selector. Note that the `exact` and `match` rules do *not* affect specificity, so you may need to supply the same `exact` or `match` rules for multiple selectors to ensure that they take precedence over other selectors. You can use the same selector multiple times in a scope mapping, within different comma-separated keys:
+If multiple selectors in the `scopes` object match a node, the node's classes will be decided based on the [most specific](https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity) selector. Note that the `exact` and `match` rules do _not_ affect specificity, so you may need to supply the same `exact` or `match` rules for multiple selectors to ensure that they take precedence over other selectors. You can use the same selector multiple times in a scope mapping, within different comma-separated keys:
 
 ```coffee
 scopes:
@@ -178,13 +179,13 @@ scopes:
 
 #### Language Injection
 
-Sometimes, a source file can contain code written in several different languages. Tree-sitter grammars support this situation using a two-part process called *language injection*. First, an 'outer' language must define an *injection point* - a set of syntax nodes whose text can be parsed using a different language, along with some logic for guessing the *name* of the other language that should be used. Second, an 'inner' language must define an `injectionRegex` - a regex pattern that will be tested against the language name provided by the injection point.
+Sometimes, a source file can contain code written in several different languages. Tree-sitter grammars support this situation using a two-part process called _language injection_. First, an 'outer' language must define an _injection point_ - a set of syntax nodes whose text can be parsed using a different language, along with some logic for guessing the _name_ of the other language that should be used. Second, an 'inner' language must define an `injectionRegex` - a regex pattern that will be tested against the language name provided by the injection point.
 
 For example, in JavaScript, [tagged template literals](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals#Tagged_templates) sometimes contain code written in a different language, and the name of the language is often used in the 'tag' function, as shown in this example:
 
 ```js
 // HTML in a template literal
-const htmlContent = html `<div>Hello ${name}</div>`
+const htmlContent = html`<div>Hello ${name}</div>`;
 ```
 
 The `tree-sitter-javascript` parser parses this tagged template literal as a `call_expression` with two children: an `identifier` and a `template_literal`:
@@ -200,28 +201,28 @@ The `tree-sitter-javascript` parser parses this tagged template literal as a `ca
 Here is an injection point that would allow syntax highlighting inside of template literals:
 
 ```js
-atom.grammars.addInjectionPoint('source.js', {
-  type: 'call_expression',
+atom.grammars.addInjectionPoint("source.js", {
+  type: "call_expression",
 
-  language (callExpression) {
-    const {firstChild} = callExpression
-    if (firstChild.type === 'identifier') {
-      return firstChild.text
+  language(callExpression) {
+    const { firstChild } = callExpression;
+    if (firstChild.type === "identifier") {
+      return firstChild.text;
     }
   },
 
-  content (callExpression) {
-    const {lastChild} = callExpression
-    if (lastChild.type === 'template_string') {
-      return lastChild
+  content(callExpression) {
+    const { lastChild } = callExpression;
+    if (lastChild.type === "template_string") {
+      return lastChild;
     }
-  }
-})
+  },
+});
 ```
 
 The `language` callback would then be called with every `call_expression` node in the syntax tree. In the example above, it would retrieve the first child of the `call_expression`, which is an `identifier` with the name "html". The callback would then return the string "html".
 
-The `content` callback would then be called with the same `call_expression` node and return the  `template_string` node within the `call_expression` node.
+The `content` callback would then be called with the same `call_expression` node and return the `template_string` node within the `call_expression` node.
 
 In order to parse the HTML within the template string, the HTML grammar file would need to specify an `injectionRegex`:
 
@@ -231,7 +232,7 @@ injectionRegex: 'html|HTML'
 
 #### Code Folding
 
-The next field in the grammar file, `folds`, controls code folding. Its value is an array of *fold pattern* objects. Fold patterns are used to decide whether or not a syntax node can be folded, and if so, where the fold should start and end. Here are some example fold patterns:
+The next field in the grammar file, `folds`, controls code folding. Its value is an array of _fold pattern_ objects. Fold patterns are used to decide whether or not a syntax node can be folded, and if so, where the fold should start and end. Here are some example fold patterns:
 
 ```coffee
 folds: [
@@ -265,11 +266,11 @@ folds: [
 
 Fold patterns can have one or more of the following fields:
 
-* `type` - A string or array of strings. In order to be foldable according to this pattern, a syntax node's type must match one of these strings.
-* `start` - An object that is used to identify a *child* node after which the fold should start. The object can have one or both of the following fields:
-  * `type` - A string or array of strings. To start a fold, a child node's type must match one of these strings.
-  * `index` - a number that's used to select a specific child according to its index. Negative values are interpreted as indices relative the last child, so that `-1` means the last child.
-* `end` - An object that is used to identify a *child* node before which the fold should end. It has the same structure as the `start` object.
+- `type` - A string or array of strings. In order to be foldable according to this pattern, a syntax node's type must match one of these strings.
+- `start` - An object that is used to identify a _child_ node after which the fold should start. The object can have one or both of the following fields:
+  - `type` - A string or array of strings. To start a fold, a child node's type must match one of these strings.
+  - `index` - a number that's used to select a specific child according to its index. Negative values are interpreted as indices relative the last child, so that `-1` means the last child.
+- `end` - An object that is used to identify a _child_ node before which the fold should end. It has the same structure as the `start` object.
 
 #### Comments
 
@@ -296,11 +297,11 @@ comments:
 
 More examples of all of these features can be found in the Tree-sitter grammars bundled with Atom:
 
-* [Bash](https://github.com/atom/language-shellscript)
-* [C](https://github.com/atom/language-c)
-* [Go](https://github.com/atom/language-go)
-* [HTML](https://github.com/atom/language-html)
-* [JavaScript](https://github.com/atom/language-javascript)
-* [Python](https://github.com/atom/language-python)
-* [Ruby](https://github.com/atom/language-ruby)
-* [TypeScript](https://github.com/atom/language-typescript)
+- [Bash](https://github.com/atom/language-shellscript)
+- [C](https://github.com/atom/language-c)
+- [Go](https://github.com/atom/language-go)
+- [HTML](https://github.com/atom/language-html)
+- [JavaScript](https://github.com/atom/language-javascript)
+- [Python](https://github.com/atom/language-python)
+- [Ruby](https://github.com/atom/language-ruby)
+- [TypeScript](https://github.com/atom/language-typescript)

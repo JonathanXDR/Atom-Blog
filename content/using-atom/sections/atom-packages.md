@@ -1,6 +1,7 @@
 ---
 title: Atom Packages
 ---
+
 ### Atom Packages
 
 First we'll start with the Atom package system. As we mentioned previously, Atom itself is a very basic core of functionality that ships with a number of useful packages that add new features like the [Tree View](https://github.com/atom/tree-view) and the [Settings View](https://github.com/atom/settings-view).
@@ -47,7 +48,7 @@ You can also install packages or themes from the command line using `apm`.
 
 Check that you have `apm` installed by running the following command in your terminal:
 
-``` command-line
+```command-line
 $ apm help install
 ```
 
@@ -59,14 +60,14 @@ If you do not, see the [Installing Atom section](/getting-started/sections/insta
 
 You can also install packages by using the `apm install` command:
 
-* `apm install <package_name>` to install the latest version.
-* `apm install <package_name>@<package_version>` to install a specific version.
+- `apm install <package_name>` to install the latest version.
+- `apm install <package_name>@<package_version>` to install a specific version.
 
 For example `apm install emmet@0.1.5` installs the `0.1.5` release of the [Emmet](https://github.com/atom/emmet) package.
 
 You can also use `apm` to find new packages to install. If you run `apm search`, you can search the package registry for a search term.
 
-``` command-line
+```command-line
 $ apm search coffee
 > Search Results For 'coffee' (29)
 > ├── build-coffee Atom Build provider for coffee, compiles CoffeeScript (1160 downloads, 2 stars)
@@ -81,7 +82,7 @@ $ apm search coffee
 
 You can use `apm view` to see more information about a specific package.
 
-``` command-line
+```command-line
 $ apm view build-coffee
 > build-coffee
 > ├── 0.6.4

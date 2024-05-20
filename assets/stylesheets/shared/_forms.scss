@@ -1,8 +1,9 @@
-@import 'shared/mixins';
+@import "shared/mixins";
 
 /* General */
 
-input, textarea {
+input,
+textarea {
   position: relative;
   padding: 0 5px;
   margin: 0px;
@@ -13,7 +14,6 @@ input, textarea {
   color: $brownDark;
   font-size: 13px;
   line-height: 24px;
-
 
   &.one-line {
     height: 24px;
@@ -61,7 +61,8 @@ select {
   margin-top: 10px;
   width: 100%;
 
-  .input, .btn {
+  .input,
+  .btn {
     height: 24px;
     font-size: 13px;
     line-height: 25px;
@@ -118,7 +119,7 @@ select {
     margin-top: 3px;
   }
 
-  input[type='checkbox'] {
+  input[type="checkbox"] {
     float: right;
     margin-top: 8px;
     margin-right: 8px;
@@ -128,7 +129,8 @@ select {
 /* Specific */
 
 form#contact {
-  #contact_comments, #contact_subject {
+  #contact_comments,
+  #contact_subject {
     width: 648px;
     max-width: 648px;
   }
@@ -142,7 +144,7 @@ form#contact {
   }
 
   dl.form {
-    clear:both;
+    clear: both;
     float: left;
   }
 
@@ -166,7 +168,12 @@ form#new_category {
   border-bottom: 1px solid #ddd;
 
   .input {
-    font: 15px helvetica, arial, freesans, clean, sans-serif;
+    font:
+      15px helvetica,
+      arial,
+      freesans,
+      clean,
+      sans-serif;
     font-weight: bold;
     -webkit-font-smoothing: antialiased;
     color: #666;
@@ -183,9 +190,9 @@ form#new_category {
 div#article-form-container {
   .errors {
     padding: 10px;
-    border: 2px solid #D63301;
-    background-color: #FFCCBA;
-    color: #D63301;
+    border: 2px solid #d63301;
+    background-color: #ffccba;
+    color: #d63301;
   }
 
   .field {
@@ -201,7 +208,8 @@ div#article-form-container {
     clear: both;
   }
 
-  #bookmarklet, #audience {
+  #bookmarklet,
+  #audience {
     margin-left: 20px;
   }
 
@@ -225,7 +233,9 @@ div#article-form-container {
     border-bottom: 1px solid $border-color;
     margin-bottom: 5px;
   }
-  .write { margin-bottom: 5px; }
+  .write {
+    margin-bottom: 5px;
+  }
 }
 
 // Form for changing the name and placement of a category
@@ -279,12 +289,18 @@ div.article-form-action-bar {
           $top: #f9f9f9;
           $bottom: #e5e5e5;
           background-color: $top;
-          background-image: -webkit-gradient(linear, left top, left bottom, from($top), to($bottom));
+          background-image: -webkit-gradient(
+            linear,
+            left top,
+            left bottom,
+            from($top),
+            to($bottom)
+          );
           background-image: -webkit-linear-gradient(top, $top, $bottom);
-          background-image:    -moz-linear-gradient(top, $top, $bottom);
-          background-image:     -ms-linear-gradient(top, $top, $bottom);
-          background-image:      -o-linear-gradient(top, $top, $bottom);
-          background-image:         linear-gradient(top, $top, $bottom);
+          background-image: -moz-linear-gradient(top, $top, $bottom);
+          background-image: -ms-linear-gradient(top, $top, $bottom);
+          background-image: -o-linear-gradient(top, $top, $bottom);
+          background-image: linear-gradient(top, $top, $bottom);
           line-height: 24px;
           color: $lightText;
           text-shadow: 0 1px 0px #fff;
@@ -294,12 +310,18 @@ div.article-form-action-bar {
           $top: #eee;
           $bottom: #dedede;
           background-color: $top;
-          background-image: -webkit-gradient(linear, left top, left bottom, from($top), to($bottom));
+          background-image: -webkit-gradient(
+            linear,
+            left top,
+            left bottom,
+            from($top),
+            to($bottom)
+          );
           background-image: -webkit-linear-gradient(top, $top, $bottom);
-          background-image:    -moz-linear-gradient(top, $top, $bottom);
-          background-image:     -ms-linear-gradient(top, $top, $bottom);
-          background-image:      -o-linear-gradient(top, $top, $bottom);
-          background-image:         linear-gradient(top, $top, $bottom);
+          background-image: -moz-linear-gradient(top, $top, $bottom);
+          background-image: -ms-linear-gradient(top, $top, $bottom);
+          background-image: -o-linear-gradient(top, $top, $bottom);
+          background-image: linear-gradient(top, $top, $bottom);
           color: $brownMedium;
         }
       }
@@ -316,7 +338,9 @@ div.article-form-action-bar {
   font-size: 12px;
   font-weight: bold;
 
-  li { display: inline-block; }
+  li {
+    display: inline-block;
+  }
 
   a {
     margin-left: 0;
@@ -327,7 +351,8 @@ div.article-form-action-bar {
     &.selected {
       color: $brownMedium;
       cursor: default;
-      background: transparent url("#{$image-dir}/under-triangle.gif") center bottom no-repeat;
+      background: transparent url("#{$image-dir}/under-triangle.gif") center
+        bottom no-repeat;
     }
   }
 }
@@ -340,7 +365,8 @@ div.article-form-action-bar {
 // No styleguide reference.
 div.search-form {
   &.small {
-    input, button {
+    input,
+    button {
       height: 24px;
       font-size: 13px;
     }
@@ -363,14 +389,15 @@ div.search-form {
     padding: 0;
     width: 660px;
 
-    input, button {
+    input,
+    button {
       height: 30px;
       font-size: 16px;
     }
     button {
       @include horz-gradient-map(-92px);
       width: 35px;
-      span{
+      span {
         font-size: 16px;
         top: 7px;
       }
@@ -380,7 +407,8 @@ div.search-form {
     }
   }
 
-  .outer, .inner {
+  .outer,
+  .inner {
     position: relative;
   }
 
@@ -420,7 +448,7 @@ div.search-form {
     text-indent: -9000px;
     vertical-align: middle;
 
-    span{
+    span {
       position: absolute;
       left: 50%;
       margin-left: -7px;

@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
   const params = new URLSearchParams(window.location.search);
   const versionsDropdown = $("#documents-search-versions");
 
@@ -19,10 +19,10 @@ $(document).ready(function() {
 
     searchResults: ".search-container",
     searchEntries: ".search-results",
-    searchTemplate: "#search-results-template"
+    searchTemplate: "#search-results-template",
   });
 
-  versionsDropdown.change(function() {
+  versionsDropdown.change(function () {
     const version = versionsDropdown.children(":selected").val();
     if (isSearchPage()) {
       params.set("v", version);
@@ -35,11 +35,11 @@ $(document).ready(function() {
 
 function debounce(fn) {
   let timeout;
-  return function() {
+  return function () {
     const args = Array.prototype.slice.call(arguments);
     const context = this;
     clearTimeout(timeout);
-    timeout = setTimeout(function() {
+    timeout = setTimeout(function () {
       fn.apply(context, args);
     }, 100);
   };
@@ -54,18 +54,18 @@ class LunrSearch {
     this.quickSearchResults = $(options.quickSearchResults);
     this.quickSearchEntries = $(
       options.quickSearchEntries,
-      this.quickSearchResults
+      this.quickSearchResults,
     );
     this.searchResults = $(options.searchResults);
     this.searchEntries = $(options.searchEntries, this.searchResults);
     this.quickSearchTemplate = this.compileTemplate(
-      $(options.quickSearchTemplate)
+      $(options.quickSearchTemplate),
     );
     this.searchTemplate = this.compileTemplate($(options.searchTemplate));
     this.searchMoreButton = $(".search-more-button");
     this.searchSpinner = $(".search-spinner");
     this.searchHeader = $(".search-header");
-    this.searchWorker = new Worker("/assets/javascripts/search_worker.js");
+    this.searchWorker = new Worker("./assets/javascripts/search_worker.js");
 
     this.reindex(options.version, options.indexUrl);
 
@@ -73,7 +73,7 @@ class LunrSearch {
     this.bindQuicksearchBlur();
     this.bindQuicksearchFocus();
 
-    this.searchWorker.addEventListener("message", event => {
+    this.searchWorker.addEventListener("message", (event) => {
       if (event.data.type.indexed) {
         this.populateSearchFromQuery();
       } else {
@@ -96,14 +96,14 @@ class LunrSearch {
   compileTemplate($template) {
     const template = $template.text();
     Mustache.parse(template, "[[ ]]");
-    return function(view, partials) {
+    return function (view, partials) {
       return Mustache.render(template, view, partials);
     };
   }
 
   reindex(version, indexDataUrl) {
     this.version = version;
-    $.getJSON(indexDataUrl, data => {
+    $.getJSON(indexDataUrl, (data) => {
       data.type = { index: true };
       this.searchWorker.postMessage(data);
     });
@@ -114,7 +114,7 @@ class LunrSearch {
       "keyup",
       debounce(() => {
         this.search(this.search_elem.val());
-      })
+      }),
     );
   }
 
@@ -125,7 +125,7 @@ class LunrSearch {
         if (this.search_elem.val()) {
           this.quickSearchResults.show();
         }
-      })
+      }),
     );
   }
 
@@ -134,13 +134,13 @@ class LunrSearch {
       "blur",
       debounce(() => {
         this.quickSearchResults.hide();
-      })
+      }),
     );
   }
 
   bindQuicksearchMousedown() {
-    $(".autocomplete-results a").each(function(_, el) {
-      $(el).bind("mousedown", function(event) {
+    $(".autocomplete-results a").each(function (_, el) {
+      $(el).bind("mousedown", function (event) {
         event.preventDefault();
         return;
       });
@@ -154,8 +154,8 @@ class LunrSearch {
       quicksearch: !isSearchPage(),
       isSearchPage: isSearchPage(),
       type: {
-        search: true
-      }
+        search: true,
+      },
     });
   }
 
@@ -164,13 +164,13 @@ class LunrSearch {
     if (entries.length > 0) {
       entries = entries.slice(0, 10);
       this.quickSearchEntries.append(
-        this.quickSearchTemplate({ entries: entries })
+        this.quickSearchTemplate({ entries: entries }),
       );
       this.quickSearchResults.show();
       const _href = $(".quicksearch-seemore").attr("href");
       $(".quicksearch-seemore").attr(
         "href",
-        `${_href}${query}&v=${this.version}`
+        `${_href}${query}&v=${this.version}`,
       );
       this.bindQuicksearchMousedown();
     }

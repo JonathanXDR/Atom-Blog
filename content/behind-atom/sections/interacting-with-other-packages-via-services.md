@@ -1,6 +1,7 @@
 ---
 title: Interacting With Other Packages Via Services
 ---
+
 ### Interacting With Other Packages Via Services
 
 Atom packages can interact with each other through versioned APIs called _services_. To provide a service, in your `package.json`, specify one or more version numbers, each paired with the name of a method on your package's main module:
@@ -28,13 +29,13 @@ module.exports = {
   },
 
   provideMyServiceV1() {
-    return adaptToLegacyAPI(myService)
+    return adaptToLegacyAPI(myService);
   },
 
   provideMyServiceV2() {
-    return myService
-  }
-}
+    return myService;
+  },
+};
 ```
 
 Similarly, to consume a service, specify one or more [version _ranges_](https://docs.npmjs.com/cli/v6/using-npm/semver#ranges), each paired with the name of a method on the package's main module:
@@ -52,10 +53,10 @@ Similarly, to consume a service, specify one or more [version _ranges_](https://
 }
 ```
 
-These methods will be called any time a package is activated that *provides* their corresponding service. They will receive the service object as an argument. You will usually need to perform some kind of cleanup in the event that the package providing the service is deactivated. To do this, return a `Disposable` from your service-consuming method:
+These methods will be called any time a package is activated that _provides_ their corresponding service. They will receive the service object as an argument. You will usually need to perform some kind of cleanup in the event that the package providing the service is deactivated. To do this, return a `Disposable` from your service-consuming method:
 
 ```javascript
-const {Disposable} = require('atom');
+const { Disposable } = require("atom");
 
 module.exports = {
   activate() {
@@ -64,12 +65,12 @@ module.exports = {
 
   consumeAnotherServiceV1(service) {
     useService(adaptServiceFromLegacyAPI(service));
-    return new Disposable(() => stopUsingService(service))
+    return new Disposable(() => stopUsingService(service));
   },
 
   consumeAnotherServiceV2(service) {
-    useService(service)
-    return new Disposable(() => stopUsingService(service))
-  }
-}
+    useService(service);
+    return new Disposable(() => stopUsingService(service));
+  },
+};
 ```

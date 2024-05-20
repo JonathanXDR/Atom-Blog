@@ -20,7 +20,7 @@
     color: #fff;
     @include gradient(#e75e5b, #b34947);
     border-color: #b74a48;
-    text-shadow: 0 -1px 0 rgba(0,0,0,.25);
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
 
     &:hover {
       color: #fff;
@@ -82,7 +82,7 @@
 }
 
 .button .mega-octicon {
-  color: rgba(0,0,0,.05);
+  color: rgba(0, 0, 0, 0.05);
   line-height: 0;
   vertical-align: middle;
   margin-top: -3px;
@@ -93,7 +93,7 @@
   display: inline-block;
   height: 32px;
   width: 32px;
-  @include background-image-retina('button-sprites', 'png', 64px, 32px);
+  @include background-image-retina("button-sprites", "png", 64px, 32px);
   position: absolute;
   top: 4px;
   left: 4px;
@@ -103,7 +103,7 @@
   display: inline-block;
   height: 32px;
   width: 32px;
-  @include background-image-retina('button-sprites', 'png', 64px, 32px);
+  @include background-image-retina("button-sprites", "png", 64px, 32px);
   position: absolute;
   background-position: -32px 0;
   top: 4px;

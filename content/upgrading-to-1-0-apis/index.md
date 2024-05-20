@@ -1,6 +1,7 @@
 ---
 title: Upgrading to 1.0 APIs
 ---
+
 ## Upgrading to 1.0 APIs
 
 {{#note}}

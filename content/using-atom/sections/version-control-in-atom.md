@@ -1,6 +1,7 @@
 ---
 title: Version Control in Atom
 ---
+
 ### Version Control in Atom
 
 Version control is an important aspect of any project and Atom comes with basic [Git](https://git-scm.com) and [GitHub](https://github.com) integration built in.
@@ -33,7 +34,7 @@ Atom can be used as your Git commit editor and ships with the [language-git pack
 
 You can configure Atom to be your Git commit editor with the following command:
 
-``` command-line
+```command-line
 $ git config --global core.editor "atom --wait"
 ```
 
@@ -57,13 +58,13 @@ This package also adds <kbd class="platform-all">Alt+G</kbd> <kbd class="platfor
 
 #### Open on GitHub
 
-If the project you're working on is on GitHub, there are also some very useful integrations you can use.  Most of the commands will take the current file you're viewing and open a view of that file on GitHub - for instance, the blame or commit history of that file.
+If the project you're working on is on GitHub, there are also some very useful integrations you can use. Most of the commands will take the current file you're viewing and open a view of that file on GitHub - for instance, the blame or commit history of that file.
 
-* <kbd class="platform-all">Alt+G</kbd> <kbd class="platform-all">O</kbd> - Open file on GitHub
-* <kbd class="platform-all">Alt+G</kbd> <kbd class="platform-all">B</kbd> - Open Blame view of file on GitHub
-* <kbd class="platform-all">Alt+G</kbd> <kbd class="platform-all">H</kbd> - Open History view of file on GitHub
-* <kbd class="platform-all">Alt+G</kbd> <kbd class="platform-all">C</kbd> - Copy the URL of the current file on GitHub to the clipboard
-* <kbd class="platform-all">Alt+G</kbd> <kbd class="platform-all">R</kbd> - Branch compare on GitHub
+- <kbd class="platform-all">Alt+G</kbd> <kbd class="platform-all">O</kbd> - Open file on GitHub
+- <kbd class="platform-all">Alt+G</kbd> <kbd class="platform-all">B</kbd> - Open Blame view of file on GitHub
+- <kbd class="platform-all">Alt+G</kbd> <kbd class="platform-all">H</kbd> - Open History view of file on GitHub
+- <kbd class="platform-all">Alt+G</kbd> <kbd class="platform-all">C</kbd> - Copy the URL of the current file on GitHub to the clipboard
+- <kbd class="platform-all">Alt+G</kbd> <kbd class="platform-all">R</kbd> - Branch compare on GitHub
 
 The branch comparison shows you the commits that are on the branch you're currently working on locally that are not on the mainline branch.
 

@@ -1,6 +1,7 @@
 ---
 title: Installing Atom
 ---
+
 ### Installing Atom
 
 To get started with Atom, we'll need to get it on your system. This section will go over installing Atom on your system as well as the basics of how to build it from source.
@@ -35,7 +36,7 @@ Atom follows the standard Mac zip installation process. You can either press the
 
 When you first open Atom, it will try to install the `atom` and `apm` commands for use in the terminal. In some cases, Atom might not be able to install these commands because it needs an administrator password. To check if Atom was able to install the `atom` command, for example, open a terminal window and type `which atom`. If the `atom` command has been installed, you'll see something like this:
 
-``` command-line
+```command-line
 $ which atom
 > /usr/local/bin/atom
 $
@@ -43,7 +44,7 @@ $
 
 If the `atom` command wasn't installed, the `which` command won't return anything:
 
-``` command-line
+```command-line
 $ which atom
 $
 ```
@@ -56,7 +57,7 @@ To install the `atom` and `apm` commands, run "Window: Install Shell Commands" f
 
 #### Installing Atom on Windows
 
-Atom is available with Windows installers that can be downloaded from https://atom.io or from the [Atom releases page](https://github.com/atom/atom/releases/latest).  Use `AtomSetup.exe` for 32-bit systems and `AtomSetup-x64.exe` for 64-bit systems. This setup program will install Atom, add the `atom` and `apm` commands to your `PATH`, and create shortcuts on the desktop and in the start menu.
+Atom is available with Windows installers that can be downloaded from https://atom.io or from the [Atom releases page](https://github.com/atom/atom/releases/latest). Use `AtomSetup.exe` for 32-bit systems and `AtomSetup-x64.exe` for 64-bit systems. This setup program will install Atom, add the `atom` and `apm` commands to your `PATH`, and create shortcuts on the desktop and in the start menu.
 
 ![Atom on Windows](../../images/windows-system-settings.png)
 
@@ -77,7 +78,7 @@ You can install Atom on Linux using your distribution's package manager by confi
 To install Atom on Debian, Ubuntu, or related distributions, add our official
 package repository to your system by running the following commands:
 
-``` command-line
+```command-line
 $ wget -qO - https://packagecloud.io/AtomEditor/atom/gpgkey | sudo apt-key add -
 $ sudo sh -c 'echo "deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ any main" > /etc/apt/sources.list.d/atom.list'
 $ sudo apt-get update
@@ -85,7 +86,7 @@ $ sudo apt-get update
 
 You can now install Atom using `apt-get` (or `apt` on Ubuntu):
 
-``` command-line
+```command-line
 # Install Atom
 $ sudo apt-get install atom
 
@@ -95,7 +96,7 @@ $ sudo apt-get install atom-beta
 
 Alternatively, you can download the [Atom .deb package](https://atom.io/download/deb) and install it directly:
 
-``` command-line
+```command-line
 # Install Atom
 $ sudo apt install ./atom-amd64.deb
 ```
@@ -104,14 +105,14 @@ $ sudo apt install ./atom-amd64.deb
 
 To install Atom on CentOS, Oracle Linux, Red Hat Enterprise Linux, Scientific Linux, Fedora, or related distributions that use the YUM or DNF package managers, add our official package repository to your system by running the following commands:
 
-``` command-line
+```command-line
 $ sudo rpm --import https://packagecloud.io/AtomEditor/atom/gpgkey
 $ sudo sh -c 'echo -e "[Atom]\nname=Atom Editor\nbaseurl=https://packagecloud.io/AtomEditor/atom/el/7/\$basearch\nenabled=1\ngpgcheck=0\nrepo_gpgcheck=1\ngpgkey=https://packagecloud.io/AtomEditor/atom/gpgkey" > /etc/yum.repos.d/atom.repo'
 ```
 
 You can now install Atom using `dnf` (or `yum` depending on your distribution):
 
-``` command-line
+```command-line
 # Install Atom
 $ sudo dnf install atom
 
@@ -121,7 +122,7 @@ $ sudo dnf install atom-beta
 
 Alternatively, you can download the [Atom .rpm package](https://atom.io/download/rpm) and install it directly:
 
-``` command-line
+```command-line
 # On YUM-based distributions
 $ sudo yum install -y atom.x86_64.rpm
 
@@ -133,14 +134,14 @@ $ sudo dnf install -y atom.x86_64.rpm
 
 To install Atom on openSUSE or other distributions that use the Zypp package manager, add our official package repository to your system by running the following commands:
 
-``` command-line
+```command-line
 $ sudo sh -c 'echo -e "[Atom]\nname=Atom Editor\nbaseurl=https://packagecloud.io/AtomEditor/atom/el/7/\$basearch\nenabled=1\ntype=rpm-md\ngpgcheck=0\nrepo_gpgcheck=1\ngpgkey=https://packagecloud.io/AtomEditor/atom/gpgkey" > /etc/zypp/repos.d/atom.repo'
 $ sudo zypper --gpg-auto-import-keys refresh
 ```
 
 You can now install Atom using `zypper`:
 
-``` command-line
+```command-line
 # Install Atom
 $ sudo zypper install atom
 
@@ -150,7 +151,7 @@ $ sudo zypper install atom-beta
 
 Alternatively, you can download the [Atom .rpm package](https://atom.io/download/rpm) and install it directly:
 
-``` command-line
+```command-line
 $ sudo zypper in -y atom.x86_64.rpm
 ```
 
@@ -158,7 +159,7 @@ $ sudo zypper in -y atom.x86_64.rpm
 
 #### Updating Atom
 
-You should consider updating Atom periodically for the latest improvements to the software.  Additionally, When Atom receives hotfixes for security vulnerabilities you will want to update your version of Atom as soon as possible.
+You should consider updating Atom periodically for the latest improvements to the software. Additionally, When Atom receives hotfixes for security vulnerabilities you will want to update your version of Atom as soon as possible.
 
 {{#mac}}
 
@@ -166,8 +167,8 @@ You should consider updating Atom periodically for the latest improvements to th
 
 To perform a manual update:
 
-* Click on the `Atom > Check for Update` menu item in the menu bar.
-* Search for `Application: About` in the [Command Palette](https://flight-manual.atom.io/getting-started/sections/atom-basics/#command-palette) and click the `Check now` button.
+- Click on the `Atom > Check for Update` menu item in the menu bar.
+- Search for `Application: About` in the [Command Palette](https://flight-manual.atom.io/getting-started/sections/atom-basics/#command-palette) and click the `Check now` button.
 
 Atom will begin to update if an update is available.
 
@@ -179,8 +180,8 @@ Atom will begin to update if an update is available.
 
 To perform a manual update:
 
-* Click on the `Help > Check for Update` menu item in the menu bar.
-* Search for `Application: About` in the [Command Palette](https://flight-manual.atom.io/getting-started/sections/atom-basics/#command-palette) and click the `Check now` button.
+- Click on the `Help > Check for Update` menu item in the menu bar.
+- Search for `Application: About` in the [Command Palette](https://flight-manual.atom.io/getting-started/sections/atom-basics/#command-palette) and click the `Check now` button.
 
 Atom will begin to update if an update is available.
 
@@ -188,7 +189,7 @@ Atom will begin to update if an update is available.
 
 {{#linux}}
 
-If you are using Atom's official package repositories, use your distribution's package manager to update Atom.  Otherwise, you will need to manually download and install the latest `.rpm` or `.deb` package from https://atom.io. For more details, see [Installing Atom on Linux.](https://flight-manual.atom.io/getting-started/sections/installing-atom/#installing-atom-on-linux)
+If you are using Atom's official package repositories, use your distribution's package manager to update Atom. Otherwise, you will need to manually download and install the latest `.rpm` or `.deb` package from https://atom.io. For more details, see [Installing Atom on Linux.](https://flight-manual.atom.io/getting-started/sections/installing-atom/#installing-atom-on-linux)
 
 {{/linux}}
 
@@ -249,7 +250,7 @@ The [Hacking on Atom Core](/hacking-atom/sections/hacking-on-atom-core/) section
 
 If you are behind a firewall and seeing SSL errors when installing packages you can disable strict SSL by running:
 
-``` command-line
+```command-line
 $ apm config set strict-ssl false
 ```
 
@@ -257,7 +258,7 @@ $ apm config set strict-ssl false
 
 If you are using a HTTP(S) proxy you can configure `apm` to use it by running:
 
-``` command-line
+```command-line
 $ apm config set https-proxy <em>YOUR_PROXY_ADDRESS</em>
 ```
 

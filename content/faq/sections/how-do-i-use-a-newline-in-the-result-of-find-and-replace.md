@@ -1,9 +1,10 @@
 ---
 title: How do I use a newline in the result of find and replace?
 ---
+
 ### How do I use a newline in the result of find and replace?
 
-To use a newline in the result of find and replace, enable the `Use Regex` option and use "\n" in your replacement text.  For example, given this text:
+To use a newline in the result of find and replace, enable the `Use Regex` option and use "\n" in your replacement text. For example, given this text:
 
 ```text
 hello, world, goodbye

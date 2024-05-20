@@ -6,22 +6,20 @@ title: Removing Shadow DOM styles
 
 In Atom `1.13` the Shadow DOM got removed from text editors. For more background on the reasoning, check out the [Pull Request](https://github.com/atom/atom/pull/12903) where it was removed. In this guide you will learn how to migrate your theme or package.
 
-
 #### Summary
 
 Here is a quick summary to see all the changes at a glance:
 
-Before | +/- | After
----|---|---
-`atom-text-editor::shadow {}` | - `::shadow` | `atom-text-editor {}`
-`.class /deep/ .class {}` | - `/deep/` | `.class .class {}`
-`atom-text-editor, :host {}` | - `:host` | `atom-text-editor {}`
-`.comment {}` | + `.syntax--` | `.syntax--comment {}`
+| Before                        | +/-           | After                 |
+| ----------------------------- | ------------- | --------------------- |
+| `atom-text-editor::shadow {}` | - `::shadow`  | `atom-text-editor {}` |
+| `.class /deep/ .class {}`     | - `/deep/`    | `.class .class {}`    |
+| `atom-text-editor, :host {}`  | - `:host`     | `atom-text-editor {}` |
+| `.comment {}`                 | + `.syntax--` | `.syntax--comment {}` |
 
 Below you'll find more detailed examples.
 
 #### UI themes and packages
-
 
 ##### `::shadow`
 
@@ -42,7 +40,6 @@ atom-text-editor .cursor {
   border-color: hotpink;
 }
 ```
-
 
 ##### `/deep/`
 
@@ -66,9 +63,7 @@ After:
 }
 ```
 
-
 #### Syntax themes
-
 
 ##### `:host`
 
@@ -77,7 +72,8 @@ Remove the `:host` pseudo-element selector. To scope any styles to the text edit
 Before:
 
 ```less
-atom-text-editor, :host {
+atom-text-editor,
+:host {
   .cursor {
     border-color: hotpink;
   }
@@ -93,7 +89,6 @@ atom-text-editor {
   }
 }
 ```
-
 
 ##### `syntax--`
 
@@ -125,8 +120,7 @@ After:
 }
 ```
 
-__Note__: Selectors like the `.gutter`, `.indent-guide`, `.cursor` among others, that are also part of Syntax themes, don't need a prefix. __Only__ grammar selectors that get used by language packages. For example `.syntax--keyword`, `.syntax--keyword.syntax--operator.syntax--js`.
-
+**Note**: Selectors like the `.gutter`, `.indent-guide`, `.cursor` among others, that are also part of Syntax themes, don't need a prefix. **Only** grammar selectors that get used by language packages. For example `.syntax--keyword`, `.syntax--keyword.syntax--operator.syntax--js`.
 
 #### Context-Targeted Style Sheets
 
@@ -148,7 +142,6 @@ my-ui-theme/
     index.less
 ```
 
-
 #### I followed the guide, but now my styling is broken!
 
 By replacing `atom-text-editor::shadow` with `atom-text-editor.editor`, specificity might have changed. This can cause the side effect that some of your properties won't be strong enough. To fix that, you can increase specificity on your selector. A simple way is to just repeat your class (in the example below it's `.my-class`):
@@ -169,8 +162,7 @@ atom-text-editor .my-class.my-class {
 }
 ```
 
-
 #### When should I migrate my theme/package?
 
 - If you already want to test the migration on master or Beta channel, make sure to change your `package.json` file to `"engines": { "atom": ">=1.13.0 <2.0.0" }`. This will prevent Atom from updating your theme or package before the user also updates Atom to version `1.13`.
-- Or you can wait until Atom `1.13` reaches __Stable__. Check [blog.atom.io](https://blog.atom.io/) to see if `1.13` already has been released. Don't worry if you're a bit late, Atom will transform the deprecated selectors automatically to avoid breaking any themes or packages. But users will start to see a deprecation warning in [deprecation-cop](https://github.com/atom/deprecation-cop).
+- Or you can wait until Atom `1.13` reaches **Stable**. Check [blog.atom.io](https://blog.atom.io/) to see if `1.13` already has been released. Don't worry if you're a bit late, Atom will transform the deprecated selectors automatically to avoid breaking any themes or packages. But users will start to see a deprecation warning in [deprecation-cop](https://github.com/atom/deprecation-cop).

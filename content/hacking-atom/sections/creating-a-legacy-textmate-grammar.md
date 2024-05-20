@@ -1,6 +1,7 @@
 ---
 title: Creating a Legacy TextMate Grammar
 ---
+
 ### Creating a Legacy TextMate Grammar
 
 Atom's syntax highlighting can be powered by two types of grammars. If you're adding support for a new language, the preferred way is to [create a Tree-sitter grammar](../creating-a-grammar). Tree-sitter grammars have better performance and provide support for more editor features, such as the `Select Larger Syntax Node` command.
@@ -19,10 +20,10 @@ TextMate grammars are supported by several popular text editors. They provide a 
 
 TextMate Grammars depend heavily on regexes, and you should be comfortable with interpreting and writing regexes before continuing. Note that Atom uses the Oniguruma engine, which is very similar to the PCRE or Perl regex engines. Here are some resources to help you out:
 
-* https://www.regular-expressions.info/tutorial.html provides a comprehensive regex tutorial
-* https://www.rexegg.com/regex-quickstart.html contains a cheat sheet for various regex expressions
-* https://regex101.com/ or https://regexr.com/ allows live prototyping
-* https://github.com/kkos/oniguruma/blob/master/doc/RE the docs for the Oniguruma regex engine
+- https://www.regular-expressions.info/tutorial.html provides a comprehensive regex tutorial
+- https://www.rexegg.com/regex-quickstart.html contains a cheat sheet for various regex expressions
+- https://regex101.com/ or https://regexr.com/ allows live prototyping
+- https://github.com/kkos/oniguruma/blob/master/doc/RE the docs for the Oniguruma regex engine
 
 Grammar files are written in the [CSON](https://github.com/bevry/cson#what-is-cson) or [JSON](https://www.json.org/) format. Whichever one you decide to use is up to you, but this tutorial will be written in CSON.
 
@@ -49,6 +50,7 @@ The default package template creates a lot of folders that aren't needed for gra
 #### Adding Patterns
 
 To start, let's add a basic pattern to tokenize the words `Flight Manual` whenever they show up. Your regex should look like `\bFlight Manual\b`. Here's what your `patterns` block should look like:
+
 ```coffee
 'patterns': [
   {
@@ -73,6 +75,7 @@ To start, let's add a basic pattern to tokenize the words `Flight Manual` whenev
 {{/note}}
 
 But what if we wanted to apply different scopes to `Flight` and `Manual`? This is possible by adding capture groups to the regex and then referencing those capture groups in a new `capture` property. For example:
+
 ```coffee
 'match': '\\b(Flight) (Manual)\\b'
 'name': 'entity.other.flight-manual'
@@ -88,6 +91,7 @@ This will assign the scope `keyword.other.flight.flight-manual` to `Flight`, `ke
 #### Begin/End Patterns
 
 Now let's say we want to tokenize the `{{#note}}` blocks that occur in Flight Manual files. Our previous two examples used `match`, but one limit of `match` is that it can only match single lines. `{{#note}}` blocks, on the other hand, can span multiple lines. For these cases, you can use the `begin`/`end` keys. Once the regex in the `begin` key is matched, tokenization will continue until the `end` pattern is reached.
+
 ```coffee
 'begin': '({{)(#note)(}})'
 'beginCaptures':
@@ -119,6 +123,7 @@ Now let's say we want to tokenize the `{{#note}}` blocks that occur in Flight Ma
 {{/tip}}
 
 Awesome, we have our first multiline pattern! However, if you've been following along and playing around in your own `.md` file, you may have noticed that `Flight Manual` doesn't receive any scopes inside a note block. A begin/end block is essentially a subgrammar of its own: once it starts matching, it will only match its own subpatterns until the end pattern is reached. Since we haven't defined any subpatterns, then clearly nothing will be matched inside of a note block. Let's fix that!
+
 ```coffee
 'begin': '({{)(#note)(}})'
 'beginCaptures':
@@ -159,6 +164,7 @@ There. With the patterns block, `Flight Manual` should now receive the proper sc
 #### Repositories and the Include keyword, or how to avoid duplication
 
 At this point, note blocks are looking pretty nice, as is the `Flight Manual` keyword, but the rest of the file is noticeably lacking any form of Markdown syntax highlighting. Is there a way to include the GitHub-Flavored Markdown grammar without copying and pasting everything over? This is where the `include` keyword comes in. `include` allows you to _include_ other patterns, even from other grammars! `language-gfm`'s `scopeName` is `source.gfm`, so let's include that. Our `patterns` block should now look like the following:
+
 ```coffee
 'patterns': [
   {
@@ -174,6 +180,7 @@ At this point, note blocks are looking pretty nice, as is the `Flight Manual` ke
 ```
 
 However, including `source.gfm` has led to another problem: note blocks still don't have any Markdown highlighting! The quick fix would be to add the include pattern to the note's pattern block as well, but now we're duplicating two patterns. You can imagine that as this grammar grows it'll quickly become inefficient to keep copying each new global pattern over to the `note` pattern as well. Therefore, `include` helpfully recognizes the special `$self` scope. `$self` automatically includes all the top-level patterns of the current grammar. The `note` block can then be simplified to the following:
+
 ```coffee
 'begin': '({{)(#note)(}})'
 # beginCaptures
@@ -198,7 +205,6 @@ There are several good resources out there that help when writing a grammar. The
 - [TextMate Section 12](http://manual.macromates.com/en/language_grammars.html). Atom uses the same principles as laid out here, including the list of acceptable scopes.
 - [`first-mate`](https://github.com/atom/first-mate). Not necessary to write a grammar, but a good technical reference for what Atom is doing behind the scenes.
 - Look at any existing packages, such as the ones for [Python](https://github.com/atom/language-python), [JavaScript](https://github.com/atom/language-javascript), [HTML](https://github.com/atom/language-html), [and more](https://github.com/atom?utf8=%E2%9C%93&q=language&type=source&language=).
-
 
 <!--
 TODO:

@@ -3,7 +3,9 @@ body {
   //
   // No styleguide reference.
   div.document-content {
-    div, span, kbd {
+    div,
+    span,
+    kbd {
       &.platform-mac,
       &.platform-windows,
       &.platform-linux {
@@ -14,7 +16,9 @@ body {
 
   &.platform-switch {
     div.document-content {
-      div, span, kbd {
+      div,
+      span,
+      kbd {
         &.platform-all {
           display: inline;
         }
@@ -54,8 +58,8 @@ body {
       }
 
       a {
-        margin: 0 .25em;
-        padding: .15em 0;
+        margin: 0 0.25em;
+        padding: 0.15em 0;
         text-decoration: none;
       }
 

@@ -1,6 +1,7 @@
 ---
 title: "Package: Modifying Text"
 ---
+
 ### Package: Modifying Text
 
 Now that we have our first package written, let's go through examples of other types of packages we can make. This section will guide you though creating a simple command that replaces the selected text with [ascii art](https://en.wikipedia.org/wiki/ASCII_art). When you run our new command with the word "cool" selected, it will be replaced with:
@@ -27,26 +28,28 @@ Now let's edit the package files to make our ASCII Art package do something inte
 Next, open up `lib/ascii-art.js` and remove all view code, so it looks like this:
 
 ```javascript
-const {CompositeDisposable} = require('atom')
+const { CompositeDisposable } = require("atom");
 
 module.exports = {
   subscriptions: null,
 
-  activate () {
-    this.subscriptions = new CompositeDisposable()
-    this.subscriptions.add(atom.commands.add('atom-workspace',
-      {'ascii-art:convert': () => this.convert()})
-    )
+  activate() {
+    this.subscriptions = new CompositeDisposable();
+    this.subscriptions.add(
+      atom.commands.add("atom-workspace", {
+        "ascii-art:convert": () => this.convert(),
+      }),
+    );
   },
 
-  deactivate () {
-    this.subscriptions.dispose()
+  deactivate() {
+    this.subscriptions.dispose();
   },
 
   convert() {
-    console.log('Convert text!')
-  }
-}
+    console.log("Convert text!");
+  },
+};
 ```
 
 ##### Create a Command
@@ -103,7 +106,7 @@ Now reload the window and verify that the key binding works.
 
 {{#warning}}
 
-**Warning:** The Atom keymap system is *case-sensitive*. This means that there is a distinction between `a` and `A` when creating keybindings. `a` means that you want to trigger the keybinding when you press <kbd class="platform-all">A</kbd>. But `A` means that you want to trigger the keybinding when you press <kbd class="platform-all">Shift+A</kbd>. You can also write `shift-a` when you want to trigger the keybinding when you press <kbd class="platform-all">Shift+A</kbd>.
+**Warning:** The Atom keymap system is _case-sensitive_. This means that there is a distinction between `a` and `A` when creating keybindings. `a` means that you want to trigger the keybinding when you press <kbd class="platform-all">A</kbd>. But `A` means that you want to trigger the keybinding when you press <kbd class="platform-all">Shift+A</kbd>. You can also write `shift-a` when you want to trigger the keybinding when you press <kbd class="platform-all">Shift+A</kbd>.
 
 We **strongly** recommend always using lowercase and explicitly spelling out when you want to include <kbd class="platform-all">Shift</kbd> in your keybindings.
 

@@ -1,9 +1,10 @@
 ---
 title: Serialization in Atom
 ---
+
 ### Serialization in Atom
 
-When a window is refreshed or restored from a previous session, the view and its associated objects are *deserialized* from a JSON representation that was stored during the window's previous shutdown. For your own views and objects to be compatible with refreshing, you'll need to make them play nicely with the serializing and deserializing.
+When a window is refreshed or restored from a previous session, the view and its associated objects are _deserialized_ from a JSON representation that was stored during the window's previous shutdown. For your own views and objects to be compatible with refreshing, you'll need to make them play nicely with the serializing and deserializing.
 
 #### Package Serialization Hook
 
@@ -12,13 +13,15 @@ Your package's main module can optionally include a `serialize` method, which wi
 ```javascript
 module.exports = {
   activate(state) {
-    this.myObject = state ? atom.deserializers.deserialize(state) : new MyObject("Hello")
+    this.myObject = state
+      ? atom.deserializers.deserialize(state)
+      : new MyObject("Hello");
   },
 
   serialize() {
-    return this.myObject.serialize()
-  }
-}
+    return this.myObject.serialize();
+  },
+};
 ```
 
 #### Serialization Methods
@@ -26,14 +29,14 @@ module.exports = {
 ```javascript
 class MyObject {
   constructor(data) {
-    this.data = data
+    this.data = data;
   }
 
   serialize() {
     return {
-      deserializer: 'MyObject',
-      data: this.data
-    }
+      deserializer: "MyObject",
+      data: this.data,
+    };
   }
 }
 ```
@@ -64,10 +67,10 @@ Here, the key (`"MyObject"`) is the name of the deserializer—the same string u
 
 ```javascript
 module.exports = {
-  deserializeMyObject({data}) {
-    return new MyObject(data)
-  }
-}
+  deserializeMyObject({ data }) {
+    return new MyObject(data);
+  },
+};
 ```
 
 Now you can call the global `deserialize` method with state returned from `serialize`, and your class's `deserialize` method will be selected automatically.
@@ -79,11 +82,11 @@ An alternative is to use the `atom.deserializers.add` method with your class in 
 ```javascript
 class MyObject {
   static initClass() {
-    atom.deserializers.add(this)
+    atom.deserializers.add(this);
   }
 
-  static deserialize({data}) {
-    return new MyObject(data)
+  static deserialize({ data }) {
+    return new MyObject(data);
   }
 
   constructor(data) {
@@ -92,13 +95,13 @@ class MyObject {
 
   serialize() {
     return {
-      deserializer: 'MyObject',
-      data: this.data
-    }
+      deserializer: "MyObject",
+      data: this.data,
+    };
   }
 }
 
-MyObject.initClass()
+MyObject.initClass();
 ```
 
 While this used to be the standard method of registering a deserializer, the `package.json` method is now preferred since it allows Atom to defer loading and executing your code until it's actually needed.
@@ -121,7 +124,7 @@ class MyObject {
     return {
       version: this.constructor.version,
       // ...
-    }
+    };
   }
 }
 

@@ -1,8 +1,8 @@
 var anchorForId = function (id) {
   var anchor = document.createElement("a");
   anchor.className = "anchor-link";
-  anchor.href      = "#" + id;
-  anchor.innerHTML = "<span class=\"octicon octicon-link\"></span>";
+  anchor.href = "#" + id;
+  anchor.innerHTML = '<span class="octicon octicon-link"></span>';
   return anchor;
 };
 

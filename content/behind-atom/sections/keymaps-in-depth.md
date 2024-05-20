@@ -1,6 +1,7 @@
 ---
 title: Keymaps In-Depth
 ---
+
 ### Keymaps In-Depth
 
 #### Structure of a Keymap File
@@ -68,22 +69,22 @@ The second selector group also targets editors, but only if they don't have the 
 
 Key combinations express one or more keys combined with optional modifier keys. For example: `ctrl-w v`, or `cmd-shift-up`. A key combination is composed of the following symbols, separated by a `-`. A key sequence can be expressed as key combinations separated by spaces.
 
-| Type           | Examples     |
-| :------------- | :------------- |
-| Character literals | `a` `4` `$` |
-| Modifier keys | `cmd` `ctrl` `alt` `shift` |
-| Special keys | `enter` `escape` `backspace` `delete` `tab` `home` `end` `pageup` `pagedown` `left` `right` `up` `down` `space` |
+| Type               | Examples                                                                                                        |
+| :----------------- | :-------------------------------------------------------------------------------------------------------------- |
+| Character literals | `a` `4` `$`                                                                                                     |
+| Modifier keys      | `cmd` `ctrl` `alt` `shift`                                                                                      |
+| Special keys       | `enter` `escape` `backspace` `delete` `tab` `home` `end` `pageup` `pagedown` `left` `right` `up` `down` `space` |
 
 ##### Commands
 
 Commands are custom DOM events that are triggered when a key combination or sequence matches a binding. This allows user interface code to listen for named commands without specifying the specific keybinding that triggers it. For example, the following code creates a command to insert the current date in an editor:
 
 ```javascript
-atom.commands.add('atom-text-editor', {
-  'user:insert-date': function (event) {
+atom.commands.add("atom-text-editor", {
+  "user:insert-date": function (event) {
     const editor = this.getModel();
     return editor.insertText(new Date().toLocaleString());
-  }
+  },
 });
 ```
 
@@ -96,7 +97,7 @@ When you are looking to bind new keys, it is often useful to use the Command Pal
 A common question is, "How do I make a single keybinding execute two or more commands?" There isn't any direct support for this in Atom, but it can be achieved by creating a custom command that performs the multiple actions you desire and then creating a keybinding for that command. For example, let's say I want to create a "composed" command that performs a Select Line followed by Cut. You could add the following to your `init.coffee`:
 
 ```javascript
-atom.commands.add('atom-text-editor', 'custom:cut-line', function () {
+atom.commands.add("atom-text-editor", "custom:cut-line", function () {
   const editor = this.getModel();
   editor.selectLinesContainingCursors();
   editor.cutSelectedText();
@@ -112,7 +113,7 @@ Then let's say we want to map this custom command to `alt-ctrl-z`, you could add
 
 ##### Specificity and Cascade Order
 
-As is the case with CSS applying styles, when multiple bindings match for a single element, the conflict is resolved by choosing the most *specific* selector. If two matching selectors have the same specificity, the binding for the selector appearing later in the cascade takes precedence.
+As is the case with CSS applying styles, when multiple bindings match for a single element, the conflict is resolved by choosing the most _specific_ selector. If two matching selectors have the same specificity, the binding for the selector appearing later in the cascade takes precedence.
 
 Currently, there's no way to specify selector ordering within a single keymap, because JSON objects do not preserve order. We handle cases where selector ordering is critical by breaking the keymap into separate files, such as `snippets-1.cson` and `snippets-2.cson`.
 
@@ -173,23 +174,23 @@ But if you click inside the Tree View and press <kbd class='platform-mac'>Cmd+O<
 
 #### Forcing Chromium's Native Keystroke Handling
 
-If you want to force the native browser behavior for a given keystroke, use the `native!` directive as the command of a binding. This can be useful to enable the correct behavior in native input elements.  If you apply the `.native-key-bindings` class to an element, all the keystrokes typically handled by the browser will be assigned the `native!` directive.
+If you want to force the native browser behavior for a given keystroke, use the `native!` directive as the command of a binding. This can be useful to enable the correct behavior in native input elements. If you apply the `.native-key-bindings` class to an element, all the keystrokes typically handled by the browser will be assigned the `native!` directive.
 
 {{#tip}}
 
-**Tip:** Components and input elements may not correctly handle backspace and arrow keys without forcing this behavior.  If your backspace isn't working correctly inside of a component, add either the directive or the `.native-key-bindings` class.
+**Tip:** Components and input elements may not correctly handle backspace and arrow keys without forcing this behavior. If your backspace isn't working correctly inside of a component, add either the directive or the `.native-key-bindings` class.
 
 {{/tip}}
 
 #### Overloading Key Bindings
 
-Occasionally, it makes sense to layer multiple actions on top of the same key binding. An example of this is the snippets package. Snippets are inserted by typing a snippet prefix such as `for` and then pressing <kbd class="platform-all">Tab</kbd>. Every time <kbd class="platform-all">Tab</kbd> is pressed, we want to execute code attempting to expand a snippet if one exists for the text preceding the cursor. If a snippet *doesn't* exist, we want <kbd class="platform-all">Tab</kbd> to actually insert whitespace.
+Occasionally, it makes sense to layer multiple actions on top of the same key binding. An example of this is the snippets package. Snippets are inserted by typing a snippet prefix such as `for` and then pressing <kbd class="platform-all">Tab</kbd>. Every time <kbd class="platform-all">Tab</kbd> is pressed, we want to execute code attempting to expand a snippet if one exists for the text preceding the cursor. If a snippet _doesn't_ exist, we want <kbd class="platform-all">Tab</kbd> to actually insert whitespace.
 
 To achieve this, the snippets package makes use of the `.abortKeyBinding()` method on the event object representing the `snippets:expand` command.
 
 ```javascript
 // pseudo-code
-editor.command('snippets:expand', e => {
+editor.command("snippets:expand", (e) => {
   if (this.cursorFollowsValidPrefix()) {
     this.expandSnippet();
   } else {
@@ -202,17 +203,17 @@ When the event handler observes that the cursor does not follow a valid prefix, 
 
 #### Step-by-Step: How Keydown Events are Mapped to Commands
 
-* A keydown event occurs on a *focused* element.
-* Starting at the focused element, the keymap walks upward towards the root of
+- A keydown event occurs on a _focused_ element.
+- Starting at the focused element, the keymap walks upward towards the root of
   the document, searching for the most specific CSS selector that matches the
   current DOM element and also contains a keystroke pattern matching the keydown
   event.
-* When a matching keystroke pattern is found, the search is terminated and the
+- When a matching keystroke pattern is found, the search is terminated and the
   pattern's corresponding command is triggered on the current element.
-* If `.abortKeyBinding()` is called on the triggered event object, the search
+- If `.abortKeyBinding()` is called on the triggered event object, the search
   is resumed, triggering a binding on the next-most-specific CSS selector for
   the same element or continuing upward to parent elements.
-* If no bindings are found, the event is handled by Chromium normally.
+- If no bindings are found, the event is handled by Chromium normally.
 
 #### Overriding Atom's Keyboard Layout Recognition
 
@@ -229,16 +230,22 @@ atom.keymaps.addKeystrokeResolver ({event}) ->
 Or if you've converted your init script to JavaScript:
 
 ```javascript
-atom.keymaps.addKeystrokeResolver(({event}) => {
-  if (event.code === 'KeyG' && event.altKey && event.ctrlKey && event.type !== 'keyup') {
-    return 'ctrl-@';
+atom.keymaps.addKeystrokeResolver(({ event }) => {
+  if (
+    event.code === "KeyG" &&
+    event.altKey &&
+    event.ctrlKey &&
+    event.type !== "keyup"
+  ) {
+    return "ctrl-@";
   }
 });
 ```
 
 If you want to know the `event` for the keystroke you pressed you can paste the following script to your [developer tools console](https://flight-manual.atom.io/hacking-atom/sections/debugging/#check-for-errors-in-the-developer-tools)
+
 ```javascript
-document.addEventListener('keydown', e => console.log(e), true);
+document.addEventListener("keydown", (e) => console.log(e), true);
 ```
 
 This will print every keypress event in Atom to the console so you can inspect `KeyboardEvent.key` and `KeyboardEvent.code`.

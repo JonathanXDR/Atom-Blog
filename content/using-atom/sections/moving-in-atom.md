@@ -1,6 +1,7 @@
 ---
 title: Moving in Atom
 ---
+
 ### Moving in Atom
 
 While it's pretty easy to move around Atom by clicking with the mouse or using the arrow keys, there are some keybindings that may help you keep your hands on the keyboard and navigate around a little faster.
@@ -29,17 +30,16 @@ In addition to single character movement, there are a number of other movement k
 
 {{/linux}}
 
-* <span class="platform-mac"><kbd class="platform-mac">Alt+Left</kbd> or <kbd class="platform-mac">Alt+B</kbd></span><kbd class="platform-windows platform-linux">Ctrl+Left</kbd> - Move to the beginning of word
-* <span class="platform-mac"><kbd class="platform-mac">Alt+Right</kbd> or <kbd class="platform-mac">Alt+F</kbd></span><kbd class="platform-windows platform-linux">Ctrl+Right</kbd> - Move to the end of word
-* <span class="platform-mac"><kbd class="platform-mac">Cmd+Left</kbd> or <kbd class="platform-mac">Ctrl+A</kbd></span><kbd class="platform-windows platform-linux">Home</kbd> - Move to the first character of the current line
-* <span class="platform-mac"><kbd class="platform-mac">Cmd+Right</kbd> or <kbd class="platform-mac">Ctrl+E</kbd></span><kbd class="platform-windows platform-linux">End</kbd> - Move to the end of the line
-* <kbd class="platform-mac">Cmd+Up</kbd><kbd class="platform-windows platform-linux">Ctrl+Home</kbd> - Move to the top of the file
-* <kbd class="platform-mac">Cmd+Down</kbd><kbd class="platform-windows platform-linux">Ctrl+End</kbd> - Move to the bottom of the file
+- <span class="platform-mac"><kbd class="platform-mac">Alt+Left</kbd> or <kbd class="platform-mac">Alt+B</kbd></span><kbd class="platform-windows platform-linux">Ctrl+Left</kbd> - Move to the beginning of word
+- <span class="platform-mac"><kbd class="platform-mac">Alt+Right</kbd> or <kbd class="platform-mac">Alt+F</kbd></span><kbd class="platform-windows platform-linux">Ctrl+Right</kbd> - Move to the end of word
+- <span class="platform-mac"><kbd class="platform-mac">Cmd+Left</kbd> or <kbd class="platform-mac">Ctrl+A</kbd></span><kbd class="platform-windows platform-linux">Home</kbd> - Move to the first character of the current line
+- <span class="platform-mac"><kbd class="platform-mac">Cmd+Right</kbd> or <kbd class="platform-mac">Ctrl+E</kbd></span><kbd class="platform-windows platform-linux">End</kbd> - Move to the end of the line
+- <kbd class="platform-mac">Cmd+Up</kbd><kbd class="platform-windows platform-linux">Ctrl+Home</kbd> - Move to the top of the file
+- <kbd class="platform-mac">Cmd+Down</kbd><kbd class="platform-windows platform-linux">Ctrl+End</kbd> - Move to the bottom of the file
 
 You can also move directly to a specific line (and column) number with <kbd class="platform-all">Ctrl+G</kbd>. This will bring up a dialog that asks which line you would like to jump to. You can also use the `row:column` syntax to jump to a character in that line as well.
 
 ![Go directly to a line](../../images/goto.png "Go directly to a line")
-
 
 #### Additional Movement and Selection Commands
 
@@ -47,33 +47,39 @@ Atom also has a few movement and selection commands that don't have keybindings 
 
 For example, the command `editor:move-to-beginning-of-screen-line` is available in the command palette, but it's not bound to any key combination. To create a key combination you need to add an entry in your `keymap.cson` file. For `editor:select-to-previous-word-boundary`, you can add the following to your `keymap.cson`:
 
-
 {{#mac}}
+
 ```coffee
 'atom-text-editor':
   'cmd-shift-e': 'editor:select-to-previous-word-boundary'
 ```
+
 {{/mac}}
 
 {{#windows}}
+
 ```coffee
 'atom-text-editor':
   'ctrl-shift-e': 'editor:select-to-previous-word-boundary'
 ```
+
 {{/windows}}
 
 {{#linux}}
+
 ```coffee
 'atom-text-editor':
   'ctrl-shift-e': 'editor:select-to-previous-word-boundary'
 ```
+
 {{/linux}}
 
-This will bind the command `editor:select-to-previous-word-boundary` to <kbd class="platform-mac">Cmd+Shift+E</kbd><kbd class="platform-windows platform-linux">Ctrl+Shift+E</kbd>.  For more information on customizing your keybindings, see [Customizing Keybindings](/using-atom/sections/basic-customization/#customizing-keybindings).
+This will bind the command `editor:select-to-previous-word-boundary` to <kbd class="platform-mac">Cmd+Shift+E</kbd><kbd class="platform-windows platform-linux">Ctrl+Shift+E</kbd>. For more information on customizing your keybindings, see [Customizing Keybindings](/using-atom/sections/basic-customization/#customizing-keybindings).
 
 Here's a list of Movement and Selection Commands that do not have a keyboard shortcut by default:
 
 {{#mac}}
+
 ```
 editor:move-to-beginning-of-next-paragraph
 editor:move-to-beginning-of-previous-paragraph
@@ -93,6 +99,7 @@ editor:select-to-previous-word-boundary
 {{/mac}}
 
 {{#windows}}
+
 ```
 editor:move-to-beginning-of-next-paragraph
 editor:move-to-beginning-of-previous-paragraph
@@ -115,6 +122,7 @@ editor:select-to-previous-word-boundary
 {{/windows}}
 
 {{#linux}}
+
 ```
 editor:move-to-beginning-of-next-paragraph
 editor:move-to-beginning-of-previous-paragraph
@@ -135,7 +143,6 @@ editor:select-to-previous-word-boundary
 ```
 
 {{/linux}}
-
 
 #### Navigating by Symbols
 

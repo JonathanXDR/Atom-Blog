@@ -11,9 +11,9 @@
  * @constructor
  */
 lunr.TokenStore = function () {
-  this.root = { docs: {} }
-  this.length = 0
-}
+  this.root = { docs: {} };
+  this.length = 0;
+};
 
 /**
  * Loads a previously serialised token store
@@ -23,13 +23,13 @@ lunr.TokenStore = function () {
  * @memberOf TokenStore
  */
 lunr.TokenStore.load = function (serialisedData) {
-  var store = new this
+  var store = new this();
 
-  store.root = serialisedData.root
-  store.length = serialisedData.length
+  store.root = serialisedData.root;
+  store.length = serialisedData.length;
 
-  return store
-}
+  return store;
+};
 
 /**
  * Adds a new token doc pair to the store.
@@ -46,19 +46,19 @@ lunr.TokenStore.load = function (serialisedData) {
  */
 lunr.TokenStore.prototype.add = function (token, doc, root) {
   var root = root || this.root,
-      key = token[0],
-      rest = token.slice(1)
+    key = token[0],
+    rest = token.slice(1);
 
-  if (!(key in root)) root[key] = {docs: {}}
+  if (!(key in root)) root[key] = { docs: {} };
 
   if (rest.length === 0) {
-    root[key].docs[doc.ref] = doc
-    this.length += 1
-    return
+    root[key].docs[doc.ref] = doc;
+    this.length += 1;
+    return;
   } else {
-    return this.add(rest, doc, root[key])
+    return this.add(rest, doc, root[key]);
   }
-}
+};
 
 /**
  * Checks whether this key is contained within this lunr.TokenStore.
@@ -71,18 +71,18 @@ lunr.TokenStore.prototype.add = function (token, doc, root) {
  * @memberOf TokenStore
  */
 lunr.TokenStore.prototype.has = function (token) {
-  if (!token) return false
+  if (!token) return false;
 
-  var node = this.root
+  var node = this.root;
 
   for (var i = 0; i < token.length; i++) {
-    if (!node[token[i]]) return false
+    if (!node[token[i]]) return false;
 
-    node = node[token[i]]
+    node = node[token[i]];
   }
 
-  return true
-}
+  return true;
+};
 
 /**
  * Retrieve a node from the token store for a given token.
@@ -97,18 +97,18 @@ lunr.TokenStore.prototype.has = function (token) {
  * @memberOf TokenStore
  */
 lunr.TokenStore.prototype.getNode = function (token) {
-  if (!token) return {}
+  if (!token) return {};
 
-  var node = this.root
+  var node = this.root;
 
   for (var i = 0; i < token.length; i++) {
-    if (!node[token[i]]) return {}
+    if (!node[token[i]]) return {};
 
-    node = node[token[i]]
+    node = node[token[i]];
   }
 
-  return node
-}
+  return node;
+};
 
 /**
  * Retrieve the documents for a node for the given token.
@@ -122,12 +122,12 @@ lunr.TokenStore.prototype.getNode = function (token) {
  * @memberOf TokenStore
  */
 lunr.TokenStore.prototype.get = function (token, root) {
-  return this.getNode(token, root).docs || {}
-}
+  return this.getNode(token, root).docs || {};
+};
 
 lunr.TokenStore.prototype.count = function (token, root) {
-  return Object.keys(this.get(token, root)).length
-}
+  return Object.keys(this.get(token, root)).length;
+};
 
 /**
  * Remove the document identified by ref from the token in the store.
@@ -142,16 +142,16 @@ lunr.TokenStore.prototype.count = function (token, root) {
  * @memberOf TokenStore
  */
 lunr.TokenStore.prototype.remove = function (token, ref) {
-  if (!token) return
-  var node = this.root
+  if (!token) return;
+  var node = this.root;
 
   for (var i = 0; i < token.length; i++) {
-    if (!(token[i] in node)) return
-    node = node[token[i]]
+    if (!(token[i] in node)) return;
+    node = node[token[i]];
   }
 
-  delete node.docs[ref]
-}
+  delete node.docs[ref];
+};
 
 /**
  * Find all the possible suffixes of the passed token using tokens
@@ -163,20 +163,19 @@ lunr.TokenStore.prototype.remove = function (token, ref) {
  */
 lunr.TokenStore.prototype.expand = function (token, memo) {
   var root = this.getNode(token),
-      docs = root.docs || {},
-      memo = memo || []
+    docs = root.docs || {},
+    memo = memo || [];
 
-  if (Object.keys(docs).length) memo.push(token)
+  if (Object.keys(docs).length) memo.push(token);
 
-  Object.keys(root)
-    .forEach(function (key) {
-      if (key === 'docs') return
+  Object.keys(root).forEach(function (key) {
+    if (key === "docs") return;
 
-      memo.concat(this.expand(token + key, memo))
-    }, this)
+    memo.concat(this.expand(token + key, memo));
+  }, this);
 
-  return memo
-}
+  return memo;
+};
 
 /**
  * Returns a representation of the token store ready for serialisation.
@@ -187,7 +186,6 @@ lunr.TokenStore.prototype.expand = function (token, memo) {
 lunr.TokenStore.prototype.toJSON = function () {
   return {
     root: this.root,
-    length: this.length
-  }
-}
-
+    length: this.length,
+  };
+};

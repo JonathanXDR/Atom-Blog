@@ -27,10 +27,10 @@ In order to make the Flight Manual consistent, these conventions must be followe
 
 [Admonition blocks](https://github.com/gjtorikian/extended-markdown-filter#admonition-blocks) are used to call out certain pieces of information. There are four levels of admonitions: tip, info, warning and danger.
 
-* `tip` should be used when there is a best practice or convention that should be noted
-* `note` should be used when there is some extra bit of information that is interesting, but not necessary
-* `warning` should be used when there is a risk to some activity so extra caution is advised
-* `danger` should be used when there is a risk of data loss or some irreversible action that needs to be taken
+- `tip` should be used when there is a best practice or convention that should be noted
+- `note` should be used when there is some extra bit of information that is interesting, but not necessary
+- `warning` should be used when there is a risk to some activity so extra caution is advised
+- `danger` should be used when there is a risk of data loss or some irreversible action that needs to be taken
 
 **Accessibility:** Always add the text version of the name of the admonition block to the first line of the first paragraph inside the block. In addition, for `danger` admonition blocks, you should add the `:rotating_light:` emoji at the very beginning. This allows people who are colorblind to tell the difference between the various blocks.
 
@@ -82,16 +82,16 @@ In order to make the Flight Manual consistent, these conventions must be followe
 
 The Flight Manual now supports OS-specific content. There are three major ways to describe OS-specific content:
 
-* OS-specific blocks
-* OS-specific spans
-* OS-specific keybindings - [See Keybindings below](#keybindings)
+- OS-specific blocks
+- OS-specific spans
+- OS-specific keybindings - [See Keybindings below](#keybindings)
 
 The OS-specific signifiers are:
 
-* `platform-all` for things that apply to all platforms
-* `platform-linux` for things that apply to Linux
-* `platform-mac` for things that apply to Mac
-* `platform-windows` for things that apply to Windows
+- `platform-all` for things that apply to all platforms
+- `platform-linux` for things that apply to Linux
+- `platform-mac` for things that apply to Mac
+- `platform-windows` for things that apply to Windows
 
 They are listed as CSS classes in tags that delineate OS-specific stuff. For example:
 
@@ -107,25 +107,25 @@ They are listed as CSS classes in tags that delineate OS-specific stuff. For exa
 
 These use the same format as [Admonition blocks](#admonition-blocks), but apply to one of the three major platforms:
 
-* `mac` - Content to be displayed only for macOS
-* `windows` - Content to be displayed only for Windows
-* `linux` - Content to be displayed only for Linux
+- `mac` - Content to be displayed only for macOS
+- `windows` - Content to be displayed only for Windows
+- `linux` - Content to be displayed only for Linux
 
 ### Language
 
-* **DO NOT** use "hit" or "strike" when referring to activating a key combination
-* **DO** use "press" or "type" when referring to activating a key combination
-* **DO NOT** use Latin contractions such as "i.e.", "e.g.", "c.f.", among others
-* **DO** use the English equivalent: "i.e." &rarr; "in other words", "e.g." &rarr; "for example", "c.f." &rarr; hyperlink to the thing you're referring to
-* **DO** use [title-case](http://titlecase.com) for *all* headings
-* **DO** hyphenate the words "open" and "source" when they act as an adjective before the noun they describe
+- **DO NOT** use "hit" or "strike" when referring to activating a key combination
+- **DO** use "press" or "type" when referring to activating a key combination
+- **DO NOT** use Latin contractions such as "i.e.", "e.g.", "c.f.", among others
+- **DO** use the English equivalent: "i.e." &rarr; "in other words", "e.g." &rarr; "for example", "c.f." &rarr; hyperlink to the thing you're referring to
+- **DO** use [title-case](http://titlecase.com) for _all_ headings
+- **DO** hyphenate the words "open" and "source" when they act as an adjective before the noun they describe
 
 ### Images
 
-* **DO** use PNG for static images
-* **DO** use GIF for animated images
-* **AVOID** having platform-specific UI in screenshots
-* If you must have platform-specific UI, create three screenshots one for each platform and use OS-specific blocks to display the correct one for the platform
+- **DO** use PNG for static images
+- **DO** use GIF for animated images
+- **AVOID** having platform-specific UI in screenshots
+- If you must have platform-specific UI, create three screenshots one for each platform and use OS-specific blocks to display the correct one for the platform
 
 Always add both a description and title text to image links:
 
@@ -147,11 +147,11 @@ All screenshots should be taken using Atom's default themes and settings.
 
 Key combinations should be wrapped in `<kbd>` tags and presented in a common way:
 
-1. **All** key combinations must be given *at least one* class indicating platforms to which they apply:
-    * `.platform-mac` - A macOS key combination
-    * `.platform-windows` - A key combination that applies to Windows
-    * `.platform-linux` - A key combination that applies to Linux
-    * `.platform-all` - A key combination that applies to all platforms
+1. **All** key combinations must be given _at least one_ class indicating platforms to which they apply:
+   - `.platform-mac` - A macOS key combination
+   - `.platform-windows` - A key combination that applies to Windows
+   - `.platform-linux` - A key combination that applies to Linux
+   - `.platform-all` - A key combination that applies to all platforms
 1. Key combinations should be wrapped in a single set of `<kbd>` tags: <kbd class="platform-mac">Cmd+N</kbd>
 1. Each key combination of a key sequence should be wrapped in separate `<kbd>` tags and separated by a space: <kbd class="platform-windows platform-linux">Ctrl+K</kbd> <kbd class="platform-windows platform-linux">Right</kbd>
 1. Modifier key names should be capitalized: <kbd class="platform-all">Shift</kbd>, <kbd class="platform-all">Ctrl</kbd>, <kbd class="platform-all">Alt</kbd>, <kbd class="platform-mac">Cmd</kbd>
@@ -161,10 +161,10 @@ Key combinations should be wrapped in `<kbd>` tags and presented in a common way
 
 #### Terminology
 
-* **key combination** - A key or keys intended to be pressed simultaneously, ex: <kbd>Cmd+Shift+P</kbd>
-* **key sequence** - Multiple key combinations that are intended to be pressed and released in sequence, ex: <kbd>Ctrl+K</kbd> <kbd>Right</kbd>
-* **keybinding** - refers to a mapping of a key combination or sequence to an Atom command
-* **keymap** - refers to a collection of keybindings
+- **key combination** - A key or keys intended to be pressed simultaneously, ex: <kbd>Cmd+Shift+P</kbd>
+- **key sequence** - Multiple key combinations that are intended to be pressed and released in sequence, ex: <kbd>Ctrl+K</kbd> <kbd>Right</kbd>
+- **keybinding** - refers to a mapping of a key combination or sequence to an Atom command
+- **keymap** - refers to a collection of keybindings
 
 ### File Names and Paths
 
@@ -172,7 +172,7 @@ File names and paths should always be wrapped in backticks: `foo/bar/baz.txt`
 
 ### Menu Names
 
-Menu names should always be presented in italics and each level should be separated by a single greater-than sign, `>`: *File > New*
+Menu names should always be presented in italics and each level should be separated by a single greater-than sign, `>`: _File > New_
 
 ### Names of UI Elements
 
@@ -184,8 +184,8 @@ Package and theme names, both core and community, should be presented all lowerc
 
 When they are linked:
 
-* Community packages and themes should be linked to their https://atom.io page: [minimap](https://atom.io/packages/minimap), [monokai](https://atom.io/themes/monokai)
-* Core packages and themes should be linked to their GitHub repository: [settings-view](https://github.com/atom/settings-view)
+- Community packages and themes should be linked to their https://atom.io page: [minimap](https://atom.io/packages/minimap), [monokai](https://atom.io/themes/monokai)
+- Core packages and themes should be linked to their GitHub repository: [settings-view](https://github.com/atom/settings-view)
 
 Note: Do not add `atom/` to the beginning of the names of Core packages. We don't want to differentiate between Core and Community packages like that.
 
@@ -197,4 +197,4 @@ Individual words or items that refer to bits of code, such as variable, API clas
 
 Blocks of source code should always be wrapped in [code fences](https://help.github.com/articles/creating-and-highlighting-code-blocks/#fenced-code-blocks) and annotated with the correct language to display the code syntax-highlighted.
 
-For things that are intended to be step-by-step command-line instructions, use the [special `command-line` annotation](https://github.com/gjtorikian/extended-markdown-filter#command-line-highlighting). (Note: the space between the backticks and `command-line` is *required*.) Use this *instead* of using the `shell` annotation on a fenced-code block.
+For things that are intended to be step-by-step command-line instructions, use the [special `command-line` annotation](https://github.com/gjtorikian/extended-markdown-filter#command-line-highlighting). (Note: the space between the backticks and `command-line` is _required_.) Use this _instead_ of using the `shell` annotation on a fenced-code block.

@@ -29,7 +29,7 @@ var view = {
   title: "Joe",
   calc: function () {
     return 2 + 4;
-  }
+  },
 };
 
 var output = Mustache.render("{{title}} spends {{calc}}", view);
@@ -61,21 +61,13 @@ View:
 Template:
 
 ```html
-* {{name}}
-* {{age}}
-* {{company}}
-* {{{company}}}
-* {{&company}}
+* {{name}} * {{age}} * {{company}} * {{{company}}} * {{&company}}
 ```
 
 Output:
 
 ```html
-* Chris
-*
-* &lt;b&gt;GitHub&lt;/b&gt;
-* <b>GitHub</b>
-* <b>GitHub</b>
+* Chris * * &lt;b&gt;GitHub&lt;/b&gt; * <b>GitHub</b> * <b>GitHub</b>
 ```
 
 JavaScript's dot notation may be used to access keys that are properties of objects in a view.
@@ -95,15 +87,13 @@ View:
 Template:
 
 ```html
-* {{name.first}} {{name.last}}
-* {{age}}
+* {{name.first}} {{name.last}} * {{age}}
 ```
 
 Output:
 
 ```html
-* Michael Jackson
-* RIP
+* Michael Jackson * RIP
 ```
 
 ### Sections
@@ -129,10 +119,7 @@ View:
 Template:
 
 ```html
-Shown.
-{{#person}}
-Never shown!
-{{/person}}
+Shown. {{#person}} Never shown! {{/person}}
 ```
 
 Output:
@@ -151,11 +138,7 @@ View:
 
 ```json
 {
-  "stooges": [
-    { "name": "Moe" },
-    { "name": "Larry" },
-    { "name": "Curly" }
-  ]
+  "stooges": [{ "name": "Moe" }, { "name": "Larry" }, { "name": "Curly" }]
 }
 ```
 
@@ -188,18 +171,13 @@ View:
 Template:
 
 ```html
-{{#musketeers}}
-* {{.}}
-{{/musketeers}}
+{{#musketeers}} * {{.}} {{/musketeers}}
 ```
 
 Output:
 
 ```html
-* Athos
-* Aramis
-* Porthos
-* D'Artagnan
+* Athos * Aramis * Porthos * D'Artagnan
 ```
 
 If the value of a section variable is a function, it will be called in the context of the current item in the list on each iteration.
@@ -223,18 +201,13 @@ View:
 Template:
 
 ```html
-{{#beatles}}
-* {{name}}
-{{/beatles}}
+{{#beatles}} * {{name}} {{/beatles}}
 ```
 
 Output:
 
 ```html
-* John Lennon
-* Paul McCartney
-* George Harrison
-* Ringo Starr
+* John Lennon * Paul McCartney * George Harrison * Ringo Starr
 ```
 
 #### Functions
@@ -281,8 +254,7 @@ View:
 Template:
 
 ```html
-{{#repos}}<b>{{name}}</b>{{/repos}}
-{{^repos}}No repos :({{/repos}}
+{{#repos}}<b>{{name}}</b>{{/repos}} {{^repos}}No repos :({{/repos}}
 ```
 
 Output:
@@ -343,7 +315,7 @@ Can be thought of as a single, expanded template:
 ```html
 <h2>Names</h2>
 {{#names}}
-  <strong>{{name}}</strong>
+<strong>{{name}}</strong>
 {{/names}}
 ```
 
@@ -351,7 +323,7 @@ In mustache.js an object of partials may be passed as the third argument to `Mus
 
 ```js
 Mustache.render(template, view, {
-  user: userTemplate
+  user: userTemplate,
 });
 ```
 
@@ -390,11 +362,11 @@ Mustache.render(template, view);
 
 mustache.js may be built specifically for several different client libraries, including the following:
 
-  - [jQuery](http://jquery.com/)
-  - [MooTools](http://mootools.net/)
-  - [Dojo](http://www.dojotoolkit.org/)
-  - [YUI](http://developer.yahoo.com/yui/)
-  - [qooxdoo](http://qooxdoo.org/)
+- [jQuery](http://jquery.com/)
+- [MooTools](http://mootools.net/)
+- [Dojo](http://www.dojotoolkit.org/)
+- [YUI](http://developer.yahoo.com/yui/)
+- [qooxdoo](http://qooxdoo.org/)
 
 These may be built using [Rake](http://rake.rubyforge.org/) and one of the following commands:
 
@@ -421,13 +393,13 @@ Then run the tests.
 
 The test suite consists of both unit and integration tests. If a template isn't rendering correctly for you, you can make a test for it by doing the following:
 
-  1. Create a template file named `mytest.mustache` in the `test/_files`
-     directory. Replace `mytest` with the name of your test.
-  2. Create a corresponding view file named `mytest.js` in the same directory.
-     This file should contain a JavaScript object literal enclosed in
-     parentheses. See any of the other view files for an example.
-  3. Create a file with the expected output in `mytest.txt` in the same
-     directory.
+1. Create a template file named `mytest.mustache` in the `test/_files`
+   directory. Replace `mytest` with the name of your test.
+2. Create a corresponding view file named `mytest.js` in the same directory.
+   This file should contain a JavaScript object literal enclosed in
+   parentheses. See any of the other view files for an example.
+3. Create a file with the expected output in `mytest.txt` in the same
+   directory.
 
 Then, you can run the test with:
 
@@ -437,22 +409,22 @@ Then, you can run the test with:
 
 mustache.js wouldn't kick ass if it weren't for these fine souls:
 
-  * Chris Wanstrath / defunkt
-  * Alexander Lang / langalex
-  * Sebastian Cohnen / tisba
-  * J Chris Anderson / jchris
-  * Tom Robinson / tlrobinson
-  * Aaron Quint / quirkey
-  * Douglas Crockford
-  * Nikita Vasilyev / NV
-  * Elise Wood / glytch
-  * Damien Mathieu / dmathieu
-  * Jakub Kuźma / qoobaa
-  * Will Leinweber / will
-  * dpree
-  * Jason Smith / jhs
-  * Aaron Gibralter / agibralter
-  * Ross Boucher / boucher
-  * Matt Sanford / mzsanford
-  * Ben Cherry / bcherry
-  * Michael Jackson / mjijackson
+- Chris Wanstrath / defunkt
+- Alexander Lang / langalex
+- Sebastian Cohnen / tisba
+- J Chris Anderson / jchris
+- Tom Robinson / tlrobinson
+- Aaron Quint / quirkey
+- Douglas Crockford
+- Nikita Vasilyev / NV
+- Elise Wood / glytch
+- Damien Mathieu / dmathieu
+- Jakub Kuźma / qoobaa
+- Will Leinweber / will
+- dpree
+- Jason Smith / jhs
+- Aaron Gibralter / agibralter
+- Ross Boucher / boucher
+- Matt Sanford / mzsanford
+- Ben Cherry / bcherry
+- Michael Jackson / mjijackson

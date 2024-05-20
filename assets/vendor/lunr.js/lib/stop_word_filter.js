@@ -16,11 +16,11 @@
  * @see lunr.Pipeline
  */
 lunr.stopWordFilter = function (token) {
-  if (lunr.stopWordFilter.stopWords.indexOf(token) === -1) return token
-}
+  if (lunr.stopWordFilter.stopWords.indexOf(token) === -1) return token;
+};
 
-lunr.stopWordFilter.stopWords = new lunr.SortedSet
-lunr.stopWordFilter.stopWords.length = 119
+lunr.stopWordFilter.stopWords = new lunr.SortedSet();
+lunr.stopWordFilter.stopWords.length = 119;
 lunr.stopWordFilter.stopWords.elements = [
   "",
   "a",
@@ -141,7 +141,7 @@ lunr.stopWordFilter.stopWords.elements = [
   "would",
   "yet",
   "you",
-  "your"
-]
+  "your",
+];
 
-lunr.Pipeline.registerFunction(lunr.stopWordFilter, 'stopWordFilter')
+lunr.Pipeline.registerFunction(lunr.stopWordFilter, "stopWordFilter");

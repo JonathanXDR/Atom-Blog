@@ -1,6 +1,7 @@
 ---
 title: Creating a Fork of a Core Package in atom/atom
 ---
+
 ### Creating a Fork of a Core Package in atom/atom
 
 Several of Atom's core packages are maintained in the [`packages` directory of the atom/atom repository](https://github.com/atom/atom/tree/master/packages). If you would like to use one of these packages as a starting point for your own package, please follow the steps below.
@@ -21,17 +22,17 @@ For the sake of this guide, let's assume that you want to start with the current
 
 3. Copy the contents of the desired package into a working directory for your fork
 
-    ``` command-line
-    $ <span class='platform-mac platform-linux'>cp -R /tmp/atom/packages/one-light-ui ~/src/one-light-ui-plus</span><span class='platform-windows'>xcopy C:\TEMP\atom\packages\one-light-ui C:\src\one-light-ui-plus /E /H /K</span>
-    ```
+   ```command-line
+   $ <span class='platform-mac platform-linux'>cp -R /tmp/atom/packages/one-light-ui ~/src/one-light-ui-plus</span><span class='platform-windows'>xcopy C:\TEMP\atom\packages\one-light-ui C:\src\one-light-ui-plus /E /H /K</span>
+   ```
 
 4. Create a local repository and commit the initial contents
 
-    ``` command-line
-    $ cd ~/src/one-light-ui-plus
-    $ git init
-    $ git commit -am "Import core Atom package"
-    ```
+   ```command-line
+   $ cd ~/src/one-light-ui-plus
+   $ git init
+   $ git commit -am "Import core Atom package"
+   ```
 
 5. Update the `name` property in `package.json` to give your package a unique name
 
@@ -39,9 +40,9 @@ For the sake of this guide, let's assume that you want to start with the current
 
 7. Commit your changes
 
-    ``` command-line
-    $ git commit -am "Apply initial customizations"
-    ```
+   ```command-line
+   $ git commit -am "Apply initial customizations"
+   ```
 
 8. [Create a public repository on github.com](https://help.github.com/articles/create-a-repo/) for your new package
 

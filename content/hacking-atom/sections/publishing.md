@@ -10,12 +10,12 @@ Atom bundles a command line utility called `apm` which we first used back in [Co
 
 There are a few things you should double check before publishing:
 
-* Your `package.json` file has `name`, `description`, and `repository` fields.
-* Your `package.json` file has a `version` field with a value of `"0.0.0"`.
-* Your `package.json` file has an `engines` field that contains an entry for Atom such as: `"engines": {"atom": ">=1.0.0 <2.0.0"}`.
-* Your package has a `README.md` file at the root.
-* Your `repository` URL in the `package.json` file is the same as the URL of your repository.
-* Your package is in a Git repository that has been pushed to [GitHub](https://github.com). Follow [this guide](https://help.github.com/articles/importing-a-git-repository-using-the-command-line/) if your package isn't already on GitHub.
+- Your `package.json` file has `name`, `description`, and `repository` fields.
+- Your `package.json` file has a `version` field with a value of `"0.0.0"`.
+- Your `package.json` file has an `engines` field that contains an entry for Atom such as: `"engines": {"atom": ">=1.0.0 <2.0.0"}`.
+- Your package has a `README.md` file at the root.
+- Your `repository` URL in the `package.json` file is the same as the URL of your repository.
+- Your package is in a Git repository that has been pushed to [GitHub](https://github.com). Follow [this guide](https://help.github.com/articles/importing-a-git-repository-using-the-command-line/) if your package isn't already on GitHub.
 
 #### Publish Your Package
 
@@ -31,18 +31,18 @@ Now let's review what the `apm publish` command does:
 
 Now run the following commands to publish your package:
 
-``` command-line
+```command-line
 $ cd path-to-your-package
 $ apm publish minor
 ```
 
-If this is the first package you are publishing, the `apm publish` command may prompt you for your GitHub username and password. If you have two-factor authentication enabled, use a [personal access token](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/) in lieu of a password. This is required to publish and you only need to enter this information the first time you publish. The credentials are stored securely in your [keychain](https://en.wikipedia.org/wiki/Keychain_(Apple)) once you login.
+If this is the first package you are publishing, the `apm publish` command may prompt you for your GitHub username and password. If you have two-factor authentication enabled, use a [personal access token](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/) in lieu of a password. This is required to publish and you only need to enter this information the first time you publish. The credentials are stored securely in your [keychain](<https://en.wikipedia.org/wiki/Keychain_(Apple)>) once you login.
 
 Your package is now published and available on atom.io. Head on over to `https://atom.io/packages/your-package-name` to see your package's page.
 
 With `apm publish`, you can bump the version and publish by using
 
-``` command-line
+```command-line
 $ apm publish <em>version-type</em>
 ```
 

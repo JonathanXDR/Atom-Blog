@@ -1,6 +1,7 @@
 ---
 title: How do I turn on line wrap?
 ---
+
 ### How do I turn on line wrap?
 
 1. Open the Settings View using <kbd>Cmd+,</kbd> on macOS or <kbd>Ctrl+,</kbd> on other platforms

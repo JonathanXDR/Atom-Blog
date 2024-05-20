@@ -1,16 +1,16 @@
 // Monospace stack gives 99% coverage to all OSes:
 // http://www.codestyle.org/servlets/FontStack?stack=Monaco%2CDejaVu+Sans+Mono%2CCourier+New&generic=monospace&x=12&y=4
-$monospace: Monaco,"DejaVu Sans Mono","Courier New",monospace;
+$monospace: Monaco, "DejaVu Sans Mono", "Courier New", monospace;
 
 /* colors */
-$text-color        : #333;
-$text-color-medium : #666;
-$text-color-light  : #999;
-$dark-green        : #325D72;
-$border-color      : #ddd;
-$link-color        : #4183c4;
-$light-grey-fill   : #eee;
-$warning-color     : #d06806;
+$text-color: #333;
+$text-color-medium: #666;
+$text-color-light: #999;
+$dark-green: #325d72;
+$border-color: #ddd;
+$link-color: #4183c4;
+$light-grey-fill: #eee;
+$warning-color: #d06806;
 
 .markdown-body {
   hr {
@@ -23,48 +23,55 @@ $warning-color     : #d06806;
     clear: both;
   }
 
-  .highlight pre, pre {
+  .highlight pre,
+  pre {
     border-bottom-width: 2px;
     padding: 8px 10px;
   }
 
   .alert {
-    position:relative;
+    position: relative;
     margin: $margin auto;
-    padding:15px;
-    font-size:16px;
-    color:#264c72;
+    padding: 15px;
+    font-size: 16px;
+    color: #264c72;
     border: 1px solid #97c1da;
     border-radius: 3px;
     @include gradient(#d8ebf8, #d0e3ef);
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     text-shadow: 0 1px 0 rgba(#fff, 0.8);
 
-    & + .alert { margin-top: 5px; }
+    & + .alert {
+      margin-top: 5px;
+    }
 
-    & > *:first-child { margin-top: 0 }
-    & > *:last-child { margin-bottom: 0 }
+    & > *:first-child {
+      margin-top: 0;
+    }
+    & > *:last-child {
+      margin-bottom: 0;
+    }
 
-    &.note{
-      color:#4c7226;
+    &.note {
+      color: #4c7226;
       @include gradient(#dbe2d3, #dce3d4);
       border: 1px solid #819c67;
     }
 
-    &.warning{
-      color:#613A00;
+    &.warning {
+      color: #613a00;
       @include gradient(#ffe3c8, #f5dac0);
       border: 1px solid #dca874;
     }
 
-    &.danger{
-      color:#9c2400;
+    &.danger {
+      color: #9c2400;
       @include gradient(#f8d8d8, #efd0d0);
       border: 1px solid #da9797;
     }
 
     code {
-      font-size:12px;
+      font-size: 12px;
     }
   }
 
@@ -82,7 +89,7 @@ $warning-color     : #d06806;
     padding: 8px 10px 8px;
     margin: 10px 0;
     border: 1px solid $border-color;
-    border-bottom-width:2px;
+    border-bottom-width: 2px;
     @include rounded-corners(3px);
     font-family: $monospace;
     font-size: 13px;
@@ -125,7 +132,7 @@ $warning-color     : #d06806;
       -webkit-font-smoothing: auto;
 
       em {
-        color: #F9FE64;
+        color: #f9fe64;
         font-style: italic;
       }
 
@@ -138,7 +145,7 @@ $warning-color     : #d06806;
       }
 
       .output {
-        color: #63E463;
+        color: #63e463;
 
         span {
           position: fixed;
@@ -151,61 +158,61 @@ $warning-color     : #d06806;
 
   .line {
     .comment {
-      color: #7C7C7C;
+      color: #7c7c7c;
     }
 
     .entity {
-      color: #FFD2A7;
+      color: #ffd2a7;
 
       &.name.type {
         text-decoration: underline;
-        color: #FFFFB6;
+        color: #ffffb6;
       }
 
       &.other.inherited-class {
-        color: #9B5C2E;
+        color: #9b5c2e;
       }
     }
 
     .keyword {
-      color: #96CBFE;
+      color: #96cbfe;
 
       &.control {
-        color: #96CBFE;
+        color: #96cbfe;
       }
 
       &.operator {
-        color: #EDEDED;
+        color: #ededed;
       }
     }
 
     .storage {
-      color: #CFCB90;
+      color: #cfcb90;
 
       &.modifier {
-        color: #96CBFE;
+        color: #96cbfe;
       }
     }
 
     .constant {
-      color: #99CC99;
+      color: #99cc99;
 
       &.numeric {
-        color: #FF73FD;
+        color: #ff73fd;
       }
     }
 
     .variable {
-      color: #C6C5FE;
+      color: #c6c5fe;
     }
 
     .invalid.deprecated {
       text-decoration: underline;
-      color: #FD5FF1;
+      color: #fd5ff1;
     }
 
     .invalid.illegal {
-      color: #FD5FF1;
+      color: #fd5ff1;
       background-color: rgba(86, 45, 86, 0.75);
     }
 
@@ -213,62 +220,62 @@ $warning-color     : #d06806;
     .source .string {
       .source,
       .meta.embedded.line {
-        color: #EDEDED;
+        color: #ededed;
       }
 
       .punctuation.section.embedded {
-        color: #00A0A0;
+        color: #00a0a0;
 
         .source {
-          color: #00A0A0;  // Required for the end of embedded strings in Ruby #716
+          color: #00a0a0; // Required for the end of embedded strings in Ruby #716
         }
       }
     }
 
     .string {
-      color: #A8FF60;
+      color: #a8ff60;
 
       .constant {
-        color: #00A0A0;
+        color: #00a0a0;
       }
 
       &.regexp {
-        color: #E9C062;
+        color: #e9c062;
 
         .constant.character.escape,
         .source.ruby.embedded,
         .string.regexp.arbitrary-repitition {
-          color: #FF8000;
+          color: #ff8000;
         }
 
         &.group {
-          color: #C6A24F;
+          color: #c6a24f;
           background-color: rgba(255, 255, 255, 0.06);
         }
 
         &.character-class {
-          color: #B18A3D;
+          color: #b18a3d;
         }
       }
 
       .variable {
-        color: #8A9A95;
+        color: #8a9a95;
       }
     }
 
     .support {
-      color: #FFFFB6;
+      color: #ffffb6;
 
       &.function {
-        color: #DAD085;
+        color: #dad085;
       }
 
       &.constant {
-        color: #FFD2A7;
+        color: #ffd2a7;
       }
 
       &.type.property-name.css {
-        color: #EDEDED;
+        color: #ededed;
       }
     }
 
@@ -276,27 +283,27 @@ $warning-color     : #d06806;
     .source .entity.other.attribute-name,
     .meta.tag.inline,
     .meta.tag.inline .entity {
-      color: #96CBFE;
+      color: #96cbfe;
     }
 
     .entity {
       &.other.attribute-name {
-        color: #FFD7B1;
+        color: #ffd7b1;
       }
 
       &.name.tag.namespace,
       &.other.attribute-name.namespace {
-        color: #E18964;
+        color: #e18964;
       }
     }
 
     .meta {
       &.preprocessor.c {
-        color: #8996A8;
+        color: #8996a8;
       }
 
       &.preprocessor.c .keyword {
-        color: #AFC4DB;
+        color: #afc4db;
       }
 
       &.cast {
@@ -314,52 +321,52 @@ $warning-color     : #d06806;
 
       &.tag,
       &.tag .entity {
-        color: #96CBFE;
+        color: #96cbfe;
       }
 
       &.selector.css .entity.name.tag {
         text-decoration: underline;
-        color: #96CBFE;
+        color: #96cbfe;
       }
 
       &.selector.css .entity.other.attribute-name.tag.pseudo-class {
-        color: #8F9D6A;
+        color: #8f9d6a;
       }
 
       &.selector.css .entity.other.attribute-name.id {
-        color: #8B98AB;
+        color: #8b98ab;
       }
 
       &.selector.css .entity.other.attribute-name.class {
-        color: #62B1FE;
+        color: #62b1fe;
       }
 
       &.property-group .support.constant.property-value.css,
       &.property-value .support.constant.property-value.css {
-        color: #F9EE98;
+        color: #f9ee98;
       }
 
       &.preprocessor.at-rule .keyword.control.at-rule {
-        color: #8693A5;
+        color: #8693a5;
       }
 
       &.property-value .support.constant.named-color.css,
       &.property-value .constant {
-        color: #87C38A;
+        color: #87c38a;
       }
 
       &.constructor.argument.css {
-        color: #8F9D6A;
+        color: #8f9d6a;
       }
 
       &.diff,
       &.diff.header {
-        color: #F8F8F8;
-        background-color: #0E2231;
+        color: #f8f8f8;
+        background-color: #0e2231;
       }
 
       &.separator {
-        color: #60A633;
+        color: #60a633;
         background-color: #242424;
       }
 

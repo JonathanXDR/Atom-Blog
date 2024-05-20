@@ -1,14 +1,9 @@
 {
   "name": "octicons",
   "description": "GitHub's icon font",
-  "license": [
-    "OFL-1.1",
-    "MIT"
-  ],
+  "license": ["OFL-1.1", "MIT"],
   "homepage": "https://octicons.github.com",
-  "authors": [
-    "GitHub <support@github.com>"
-  ],
+  "authors": ["GitHub <support@github.com>"],
   "main": [
     "octicons/sprockets-octicons.scss",
     "octicons/octicons.eot",
@@ -16,15 +11,6 @@
     "octicons/octicons.ttf",
     "octicons/octicons.woff"
   ],
-  "keywords": [
-    "GitHub",
-    "icons",
-    "font",
-    "web font",
-    "icon font"
-  ],
-  "ignore": [
-    "**/.*",
-    "bower_components"
-  ]
+  "keywords": ["GitHub", "icons", "font", "web font", "icon font"],
+  "ignore": ["**/.*", "bower_components"]
 }

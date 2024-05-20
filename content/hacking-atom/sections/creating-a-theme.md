@@ -1,11 +1,12 @@
 ---
 title: Creating a Theme
 ---
+
 ### Creating a Theme
 
 Atom's interface is rendered using HTML, and it's styled via [Less](http://lesscss.org/) which is a superset of CSS. Don't worry if you haven't heard of Less before; it's just like CSS, but with a few handy extensions.
 
-Atom supports two types of themes: _UI_ and _Syntax_.  UI themes style elements such as the tree view, the tabs, drop-down lists, and the status bar. Syntax themes style the code, gutter and other elements inside the editor view.
+Atom supports two types of themes: _UI_ and _Syntax_. UI themes style elements such as the tree view, the tabs, drop-down lists, and the status bar. Syntax themes style the code, gutter and other elements inside the editor view.
 
 ![Theme boundary](../../images/theme-boundary.png)
 
@@ -15,10 +16,10 @@ Themes can be installed and changed from the Settings View which you can open by
 
 Themes are pretty straightforward but it's still helpful to be familiar with a few things before starting:
 
-* Less is a superset of CSS, but it has some really handy features like variables. If you aren't familiar with its syntax, take a few minutes to [familiarize yourself](https://speakerdeck.com/danmatthews/less-css).
-* You may also want to review the concept of a `package.json` (as covered in [Atom `package.json`](/hacking-atom/sections/package-word-count/#packagejson)). This file is used to help distribute your theme to Atom users.
-* Your theme's `package.json` must contain a `theme` key with a value of `ui` or `syntax` for Atom to recognize and load it as a theme.
-* You can find existing themes to install or fork in [the atom.io themes registry](https://atom.io/themes).
+- Less is a superset of CSS, but it has some really handy features like variables. If you aren't familiar with its syntax, take a few minutes to [familiarize yourself](https://speakerdeck.com/danmatthews/less-css).
+- You may also want to review the concept of a `package.json` (as covered in [Atom `package.json`](/hacking-atom/sections/package-word-count/#packagejson)). This file is used to help distribute your theme to Atom users.
+- Your theme's `package.json` must contain a `theme` key with a value of `ui` or `syntax` for Atom to recognize and load it as a theme.
+- You can find existing themes to install or fork in [the atom.io themes registry](https://atom.io/themes).
 
 #### Creating a Syntax Theme
 
@@ -80,6 +81,7 @@ To create a UI theme, do the following:
 UI themes **must** provide a `ui-variables.less` and Syntax themes a `syntax-variables.less` file. It contains predefined variables that packages use to make sure the look and feel matches.
 
 Here the variables with the default values:
+
 - [ui-variables.less](https://github.com/atom/atom/blob/master/static/variables/ui-variables.less)
 - [syntax-variables.less](https://github.com/atom/atom/blob/master/static/variables/syntax-variables.less)
 
@@ -120,8 +122,8 @@ Reloading by pressing <kbd class="platform-mac">Alt+Cmd+Ctrl+L</kbd><kbd class="
 
 To launch a Dev Mode window:
 
-* Open your theme directory in a dev window by selecting the _View > Developer > Open in Dev Mode_ menu item
-* Or launch Atom from the terminal with `atom --dev`
+- Open your theme directory in a dev window by selecting the _View > Developer > Open in Dev Mode_ menu item
+- Or launch Atom from the terminal with `atom --dev`
 
 If you'd like to reload all the styles at any time, you can use the shortcut <kbd class="platform-mac">Alt+Cmd+Ctrl+L</kbd><kbd class="platform-windows platform-linux">Alt+Ctrl+R</kbd>.
 
@@ -151,7 +153,7 @@ Sometimes when creating a theme (or package) things can go wrong and the editor 
 
 > Make changes on the **left**, see the changes getting applied in "Dev Mode" on the **right**.
 
-Now if you mess up something, only the window in "Dev Mode"  will be affected and you can easily correct the mistake in your "normal" window.
+Now if you mess up something, only the window in "Dev Mode" will be affected and you can easily correct the mistake in your "normal" window.
 
 #### Publish your theme
 

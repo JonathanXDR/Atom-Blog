@@ -1,4 +1,4 @@
-@import 'shared/mixins';
+@import "shared/mixins";
 //@import 'globals/variables';
 
 .autocomplete-results {
@@ -39,7 +39,6 @@
 }
 
 .search-container {
-
   .hidden {
     display: none;
   }
@@ -73,17 +72,25 @@
   }
 
   .markdown {
-    h1, h2, h3, h4, h5, h6 {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
       font-size: 16px;
       font-weight: bold;
       border-bottom: 0;
     }
 
-    .anchor { display: none; }
+    .anchor {
+      display: none;
+    }
 
-    a { color: $brownDark; }
+    a {
+      color: $brownDark;
+    }
   }
-
 }
 
 // A top and bottom outlined list item style for a list of search results.
@@ -91,7 +98,7 @@
 // Instances of the search term are highlighted with a <span>.
 //
 // No styleguide reference
-ul.search-results{
+ul.search-results {
   margin: 0;
   border-top: 1px solid $border-color;
 
@@ -118,7 +125,7 @@ ul.search-results{
       }
     }
 
-    .label{
+    .label {
       text-transform: uppercase;
       @include rounded-corners;
       @include gradient;
@@ -126,13 +133,13 @@ ul.search-results{
       font-size: 9px;
       padding: 1px 2px;
 
-      a{
+      a {
         color: $lightText;
       }
     }
 
     p {
-      margin: .5em 0;
+      margin: 0.5em 0;
     }
 
     p.category {

@@ -1,6 +1,7 @@
 ---
 title: Writing in Atom
 ---
+
 ### Writing in Atom
 
 Though it is probably most common to use Atom to write software code, Atom can also be used to write prose quite effectively. Most often this is done in some sort of markup language such as Asciidoc or [Markdown](https://help.github.com/articles/about-writing-and-formatting-on-github/) (in which this manual is written). Here we'll quickly cover a few of the tools Atom provides for helping you write prose.
@@ -25,7 +26,7 @@ The spell checking is implemented in the [spell-check](https://github.com/atom/s
 
 When writing prose in a markup language, it's often very useful to get an idea of what the content will look like when it's rendered. Atom ships with a package for previewing Markdown by default.
 
-* <kbd class="platform-mac platform-windows platform-linux">Ctrl+Shift+M</kbd> - Will toggle Preview mode for Markdown.
+- <kbd class="platform-mac platform-windows platform-linux">Ctrl+Shift+M</kbd> - Will toggle Preview mode for Markdown.
 
 ![Preview your prose](../../images/preview.png)
 
@@ -42,9 +43,9 @@ There are also a number of great snippets available for writing Markdown quickly
 If you type `img` and hit `tab` you get a Markdown-formatted image embed code like `![]()`. If you type `table` and hit `tab` you get a nice example table to fill out.
 
 ```markdown
-| Header One     | Header Two     |
-| :------------- | :------------- |
-| Item One       | Item Two       |
+| Header One | Header Two |
+| :--------- | :--------- |
+| Item One   | Item Two   |
 ```
 
 Although there are only a handful of Markdown snippets (`b` for bold, `i` for italic, `code` for a code block, etc), they save you from having to look up the more obscure syntaxes. Again, you can easily see a list of all available snippets for the type of file you're currently in by choosing "Snippets: Available" in the Command Palette.

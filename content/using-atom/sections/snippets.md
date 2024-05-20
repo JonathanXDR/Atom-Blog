@@ -1,7 +1,9 @@
 ---
 title: Snippets
 ---
+
 ### Snippets
+
 Snippets are an incredibly powerful way to quickly generate commonly needed code syntax from a shortcut.
 
 The idea is that you can type something like `habtm` and then press the <kbd class="platform-all">Tab</kbd> key and it will expand into `has_and_belongs_to_many`.
@@ -9,15 +11,13 @@ The idea is that you can type something like `habtm` and then press the <kbd cla
 Many Core and Community packages come bundled with their own snippets that are specific to it. For example, the `language-html` package that provides support for HTML syntax highlighting and grammar comes with dozens of snippets to create many of the various HTML tags you might want to use. If you create a new HTML file in Atom, you can type `html` and then press <kbd class="platform-all">Tab</kbd> and it will expand to:
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" dir="ltr">
   <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
     <title></title>
   </head>
-  <body>
-
-  </body>
+  <body></body>
 </html>
 ```
 

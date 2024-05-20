@@ -1,7 +1,7 @@
 body {
   background-color: #081f28;
   color: #708284;
-  font-family: 'Helvetica Neue', Helvetica, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
   font-size: 18px;
 }
 
@@ -30,7 +30,8 @@ h3 {
   margin: 0;
 }
 
-h1, h2 {
+h1,
+h2 {
   margin: 0;
 }
 
@@ -110,21 +111,23 @@ section.columns {
   font-size: 1.2em;
 }
 
-pre .keyword, pre .special {
+pre .keyword,
+pre .special {
   font-weight: bold;
-  color: #2076c7
+  color: #2076c7;
 }
 
-pre .string, pre .regexp {
-  color: #728a06
+pre .string,
+pre .regexp {
+  color: #728a06;
 }
 
-pre .class { 
-  color: #A57707;
+pre .class {
+  color: #a57707;
 }
 
 pre .number {
-  color: #D11c24
+  color: #d11c24;
 }
 
 pre .comment {

@@ -1,6 +1,7 @@
 ---
 title: Pending Pane Items
 ---
+
 ### Pending Pane Items
 
 _"Pending Pane Items" were formerly referred to as "Preview Tabs"_
@@ -9,10 +10,10 @@ When you open a new file by single-clicking in the Tree View, it will open in a 
 
 You can confirm a pending file by doing any of the following:
 
-* Double-clicking the tab of the file
-* Double-clicking the file in the tree view
-* Editing the contents of the file
-* Saving the file
+- Double-clicking the tab of the file
+- Double-clicking the file in the tree view
+- Editing the contents of the file
+- Saving the file
 
 You can also open a file already confirmed by double-clicking it in the tree view instead of single-clicking it.
 

@@ -10,9 +10,9 @@
  * @constructor
  */
 lunr.SortedSet = function () {
-  this.length = 0
-  this.elements = []
-}
+  this.length = 0;
+  this.elements = [];
+};
 
 /**
  * Loads a previously serialised sorted set.
@@ -22,13 +22,13 @@ lunr.SortedSet = function () {
  * @memberOf SortedSet
  */
 lunr.SortedSet.load = function (serialisedData) {
-  var set = new this
+  var set = new this();
 
-  set.elements = serialisedData
-  set.length = serialisedData.length
+  set.elements = serialisedData;
+  set.length = serialisedData.length;
 
-  return set
-}
+  return set;
+};
 
 /**
  * Inserts new items into the set in the correct position to maintain the
@@ -39,12 +39,12 @@ lunr.SortedSet.load = function (serialisedData) {
  */
 lunr.SortedSet.prototype.add = function () {
   Array.prototype.slice.call(arguments).forEach(function (element) {
-    if (~this.indexOf(element)) return
-    this.elements.splice(this.locationFor(element), 0, element)
-  }, this)
+    if (~this.indexOf(element)) return;
+    this.elements.splice(this.locationFor(element), 0, element);
+  }, this);
 
-  this.length = this.elements.length
-}
+  this.length = this.elements.length;
+};
 
 /**
  * Converts this sorted set into an array.
@@ -53,8 +53,8 @@ lunr.SortedSet.prototype.add = function () {
  * @memberOf SortedSet
  */
 lunr.SortedSet.prototype.toArray = function () {
-  return this.elements.slice()
-}
+  return this.elements.slice();
+};
 
 /**
  * Creates a new array with the results of calling a provided function on every
@@ -70,8 +70,8 @@ lunr.SortedSet.prototype.toArray = function () {
  * @memberOf SortedSet
  */
 lunr.SortedSet.prototype.map = function (fn, ctx) {
-  return this.elements.map(fn, ctx)
-}
+  return this.elements.map(fn, ctx);
+};
 
 /**
  * Executes a provided function once per sorted set element.
@@ -85,8 +85,8 @@ lunr.SortedSet.prototype.map = function (fn, ctx) {
  * for the function fn.
  */
 lunr.SortedSet.prototype.forEach = function (fn, ctx) {
-  return this.elements.forEach(fn, ctx)
-}
+  return this.elements.forEach(fn, ctx);
+};
 
 /**
  * Returns the index at which a given element can be found in the
@@ -102,23 +102,23 @@ lunr.SortedSet.prototype.forEach = function (fn, ctx) {
  */
 lunr.SortedSet.prototype.indexOf = function (elem, start, end) {
   var start = start || 0,
-      end = end || this.elements.length,
-      sectionLength = end - start,
-      pivot = start + Math.floor(sectionLength / 2),
-      pivotElem = this.elements[pivot]
+    end = end || this.elements.length,
+    sectionLength = end - start,
+    pivot = start + Math.floor(sectionLength / 2),
+    pivotElem = this.elements[pivot];
 
   if (sectionLength <= 1) {
     if (pivotElem === elem) {
-      return pivot
+      return pivot;
     } else {
-      return -1
+      return -1;
     }
   }
 
-  if (pivotElem < elem) return this.indexOf(elem, pivot, end)
-  if (pivotElem > elem) return this.indexOf(elem, start, pivot)
-  if (pivotElem === elem) return pivot
-}
+  if (pivotElem < elem) return this.indexOf(elem, pivot, end);
+  if (pivotElem > elem) return this.indexOf(elem, start, pivot);
+  if (pivotElem === elem) return pivot;
+};
 
 /**
  * Returns the position within the sorted set that an element should be
@@ -137,19 +137,19 @@ lunr.SortedSet.prototype.indexOf = function (elem, start, end) {
  */
 lunr.SortedSet.prototype.locationFor = function (elem, start, end) {
   var start = start || 0,
-      end = end || this.elements.length,
-      sectionLength = end - start,
-      pivot = start + Math.floor(sectionLength / 2),
-      pivotElem = this.elements[pivot]
+    end = end || this.elements.length,
+    sectionLength = end - start,
+    pivot = start + Math.floor(sectionLength / 2),
+    pivotElem = this.elements[pivot];
 
   if (sectionLength <= 1) {
-    if (pivotElem > elem) return pivot
-    if (pivotElem < elem) return pivot + 1
+    if (pivotElem > elem) return pivot;
+    if (pivotElem < elem) return pivot + 1;
   }
 
-  if (pivotElem < elem) return this.locationFor(elem, pivot, end)
-  if (pivotElem > elem) return this.locationFor(elem, start, pivot)
-}
+  if (pivotElem < elem) return this.locationFor(elem, pivot, end);
+  if (pivotElem > elem) return this.locationFor(elem, start, pivot);
+};
 
 /**
  * Creates a new lunr.SortedSet that contains the elements in the intersection
@@ -160,33 +160,36 @@ lunr.SortedSet.prototype.locationFor = function (elem, start, end) {
  * @memberOf SortedSet
  */
 lunr.SortedSet.prototype.intersect = function (otherSet) {
-  var intersectSet = new lunr.SortedSet,
-      i = 0, j = 0,
-      a_len = this.length, b_len = otherSet.length,
-      a = this.elements, b = otherSet.elements
+  var intersectSet = new lunr.SortedSet(),
+    i = 0,
+    j = 0,
+    a_len = this.length,
+    b_len = otherSet.length,
+    a = this.elements,
+    b = otherSet.elements;
 
   while (true) {
-    if (i > a_len - 1 || j > b_len - 1) break
+    if (i > a_len - 1 || j > b_len - 1) break;
 
     if (a[i] === b[j]) {
-      intersectSet.add(a[i])
-      i++, j++
-      continue
+      intersectSet.add(a[i]);
+      i++, j++;
+      continue;
     }
 
     if (a[i] < b[j]) {
-      i++
-      continue
+      i++;
+      continue;
     }
 
     if (a[i] > b[j]) {
-      j++
-      continue
+      j++;
+      continue;
     }
-  };
+  }
 
-  return intersectSet
-}
+  return intersectSet;
+};
 
 /**
  * Makes a copy of this set
@@ -195,13 +198,13 @@ lunr.SortedSet.prototype.intersect = function (otherSet) {
  * @memberOf SortedSet
  */
 lunr.SortedSet.prototype.clone = function () {
-  var clone = new lunr.SortedSet
+  var clone = new lunr.SortedSet();
 
-  clone.elements = this.toArray()
-  clone.length = clone.elements.length
+  clone.elements = this.toArray();
+  clone.length = clone.elements.length;
 
-  return clone
-}
+  return clone;
+};
 
 /**
  * Creates a new lunr.SortedSet that contains the elements in the union
@@ -212,20 +215,20 @@ lunr.SortedSet.prototype.clone = function () {
  * @memberOf SortedSet
  */
 lunr.SortedSet.prototype.union = function (otherSet) {
-  var longSet, shortSet, unionSet
+  var longSet, shortSet, unionSet;
 
   if (this.length >= otherSet.length) {
-    longSet = this, shortSet = otherSet
+    (longSet = this), (shortSet = otherSet);
   } else {
-    longSet = otherSet, shortSet = this
+    (longSet = otherSet), (shortSet = this);
   }
 
-  unionSet = longSet.clone()
+  unionSet = longSet.clone();
 
-  unionSet.add.apply(unionSet, shortSet.toArray())
+  unionSet.add.apply(unionSet, shortSet.toArray());
 
-  return unionSet
-}
+  return unionSet;
+};
 
 /**
  * Returns a representation of the sorted set ready for serialisation.
@@ -234,5 +237,5 @@ lunr.SortedSet.prototype.union = function (otherSet) {
  * @memberOf SortedSet
  */
 lunr.SortedSet.prototype.toJSON = function () {
-  return this.toArray()
-}
+  return this.toArray();
+};

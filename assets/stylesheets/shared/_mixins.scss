@@ -18,7 +18,7 @@
 // $end   - The color hex at the bottom.
 //
 // Compatibility untested.
-@mixin gradient($start: #fafafa, $end: #eaeaea){
+@mixin gradient($start: #fafafa, $end: #eaeaea) {
   background-color: $end;
   // FF 3.6+
   background-image: -moz-linear-gradient($start, $end);
@@ -41,10 +41,11 @@
 }
 
 @mixin background-image-retina($file, $type, $width, $height) {
-  background-image: url($file + '.' + $type);
+  background-image: url($file + "." + $type);
 
-  @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2) {
-    background-image: url($file + '@2x.' + $type);
+  @media only screen and (-webkit-min-device-pixel-ratio: 2),
+    only screen and (min-device-pixel-ratio: 2) {
+    background-image: url($file + "@2x." + $type);
     -webkit-background-size: $width $height;
     -moz-background-size: $width $height;
     -o-background-size: $width $height;
@@ -62,8 +63,8 @@
   -moz-border-radius: $val;
   border-radius: $val;
   -moz-background-clip: padding;
-  -webkit-background-clip:
-  padding-box; background-clip: padding-box;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
 }
 
 @mixin span-label() {
@@ -75,14 +76,13 @@
   font-weight: bold;
 }
 
-
 // shortcut to the gradient map
 //
 // $y     - y value of the desired gradient
 // $color - the optional background color
 //
 // Compatable everywhere
-@mixin horz-gradient-map($y:0px, $color:transparent) {
+@mixin horz-gradient-map($y: 0px, $color: transparent) {
   background: $color url($gradient-sprite) 0 $y repeat-x;
 }
 
@@ -91,7 +91,7 @@
 // $val - string for shadow values
 //
 // Compatable in Safari 3+, IE9+, Firefox 3.5+, Chrome 6+
-@mixin drop-shadow($val: 0px 0px 5px rgba(#000, .2)) {
+@mixin drop-shadow($val: 0px 0px 5px rgba(#000, 0.2)) {
   -webkit-box-shadow: $val;
   -moz-box-shadow: $val;
   box-shadow: $val;
@@ -118,4 +118,4 @@ $mobileMargin: 15px;
 
 $codeFont: Consolas, "Liberation Mono", Menlo, Courier, monospace;
 
-$gradient-sprite   : "#{$image-dir}/gradient-sprite.png";
+$gradient-sprite: "#{$image-dir}/gradient-sprite.png";

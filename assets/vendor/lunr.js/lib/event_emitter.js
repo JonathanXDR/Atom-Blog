@@ -9,8 +9,8 @@
  * @constructor
  */
 lunr.EventEmitter = function () {
-  this.events = {}
-}
+  this.events = {};
+};
 
 /**
  * Binds a handler function to a specific event(s).
@@ -23,16 +23,17 @@ lunr.EventEmitter = function () {
  */
 lunr.EventEmitter.prototype.addListener = function () {
   var args = Array.prototype.slice.call(arguments),
-      fn = args.pop(),
-      names = args
+    fn = args.pop(),
+    names = args;
 
-  if (typeof fn !== "function") throw new TypeError ("last argument must be a function")
+  if (typeof fn !== "function")
+    throw new TypeError("last argument must be a function");
 
   names.forEach(function (name) {
-    if (!this.hasHandler(name)) this.events[name] = []
-    this.events[name].push(fn)
-  }, this)
-}
+    if (!this.hasHandler(name)) this.events[name] = [];
+    this.events[name].push(fn);
+  }, this);
+};
 
 /**
  * Removes a handler function from a specific event.
@@ -42,13 +43,13 @@ lunr.EventEmitter.prototype.addListener = function () {
  * @memberOf EventEmitter
  */
 lunr.EventEmitter.prototype.removeListener = function (name, fn) {
-  if (!this.hasHandler(name)) return
+  if (!this.hasHandler(name)) return;
 
-  var fnIndex = this.events[name].indexOf(fn)
-  this.events[name].splice(fnIndex, 1)
+  var fnIndex = this.events[name].indexOf(fn);
+  this.events[name].splice(fnIndex, 1);
 
-  if (!this.events[name].length) delete this.events[name]
-}
+  if (!this.events[name].length) delete this.events[name];
+};
 
 /**
  * Calls all functions bound to the given event.
@@ -60,14 +61,14 @@ lunr.EventEmitter.prototype.removeListener = function (name, fn) {
  * @memberOf EventEmitter
  */
 lunr.EventEmitter.prototype.emit = function (name) {
-  if (!this.hasHandler(name)) return
+  if (!this.hasHandler(name)) return;
 
-  var args = Array.prototype.slice.call(arguments, 1)
+  var args = Array.prototype.slice.call(arguments, 1);
 
   this.events[name].forEach(function (fn) {
-    fn.apply(undefined, args)
-  })
-}
+    fn.apply(undefined, args);
+  });
+};
 
 /**
  * Checks whether a handler has ever been stored against an event.
@@ -77,6 +78,5 @@ lunr.EventEmitter.prototype.emit = function (name) {
  * @memberOf EventEmitter
  */
 lunr.EventEmitter.prototype.hasHandler = function (name) {
-  return name in this.events
-}
-
+  return name in this.events;
+};

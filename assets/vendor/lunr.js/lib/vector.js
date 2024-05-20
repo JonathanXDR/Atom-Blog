@@ -10,10 +10,10 @@
  * @constructor
  */
 lunr.Vector = function () {
-  this._magnitude = null
-  this.list = undefined
-  this.length = 0
-}
+  this._magnitude = null;
+  this.list = undefined;
+  this.length = 0;
+};
 
 /**
  * lunr.Vector.Node is a simple struct for each node
@@ -27,10 +27,10 @@ lunr.Vector = function () {
  * @memberOf Vector
  */
 lunr.Vector.Node = function (idx, val, next) {
-  this.idx = idx
-  this.val = val
-  this.next = next
-}
+  this.idx = idx;
+  this.val = val;
+  this.next = next;
+};
 
 /**
  * Inserts a new value at a position in a vector.
@@ -40,28 +40,28 @@ lunr.Vector.Node = function (idx, val, next) {
  * @memberOf Vector.
  */
 lunr.Vector.prototype.insert = function (idx, val) {
-  var list = this.list
+  var list = this.list;
 
   if (!list) {
-    this.list = new lunr.Vector.Node (idx, val, list)
-    return this.length++
+    this.list = new lunr.Vector.Node(idx, val, list);
+    return this.length++;
   }
 
   var prev = list,
-      next = list.next
+    next = list.next;
 
   while (next != undefined) {
     if (idx < next.idx) {
-      prev.next = new lunr.Vector.Node (idx, val, next)
-      return this.length++
+      prev.next = new lunr.Vector.Node(idx, val, next);
+      return this.length++;
     }
 
-    prev = next, next = next.next
+    (prev = next), (next = next.next);
   }
 
-  prev.next = new lunr.Vector.Node (idx, val, next)
-  return this.length++
-}
+  prev.next = new lunr.Vector.Node(idx, val, next);
+  return this.length++;
+};
 
 /**
  * Calculates the magnitude of this vector.
@@ -70,19 +70,19 @@ lunr.Vector.prototype.insert = function (idx, val) {
  * @memberOf Vector
  */
 lunr.Vector.prototype.magnitude = function () {
-  if (this._magniture) return this._magnitude
+  if (this._magniture) return this._magnitude;
   var node = this.list,
-      sumOfSquares = 0,
-      val
+    sumOfSquares = 0,
+    val;
 
   while (node) {
-    val = node.val
-    sumOfSquares += val * val
-    node = node.next
+    val = node.val;
+    sumOfSquares += val * val;
+    node = node.next;
   }
 
-  return this._magnitude = Math.sqrt(sumOfSquares)
-}
+  return (this._magnitude = Math.sqrt(sumOfSquares));
+};
 
 /**
  * Calculates the dot product of this vector and another vector.
@@ -93,23 +93,23 @@ lunr.Vector.prototype.magnitude = function () {
  */
 lunr.Vector.prototype.dot = function (otherVector) {
   var node = this.list,
-      otherNode = otherVector.list,
-      dotProduct = 0
+    otherNode = otherVector.list,
+    dotProduct = 0;
 
   while (node && otherNode) {
     if (node.idx < otherNode.idx) {
-      node = node.next
+      node = node.next;
     } else if (node.idx > otherNode.idx) {
-      otherNode = otherNode.next
+      otherNode = otherNode.next;
     } else {
-      dotProduct += node.val * otherNode.val
-      node = node.next
-      otherNode = otherNode.next
+      dotProduct += node.val * otherNode.val;
+      node = node.next;
+      otherNode = otherNode.next;
     }
   }
 
-  return dotProduct
-}
+  return dotProduct;
+};
 
 /**
  * Calculates the cosine similarity between this vector and another
@@ -121,5 +121,5 @@ lunr.Vector.prototype.dot = function (otherVector) {
  * @memberOf Vector
  */
 lunr.Vector.prototype.similarity = function (otherVector) {
-  return this.dot(otherVector) / (this.magnitude() * otherVector.magnitude())
-}
+  return this.dot(otherVector) / (this.magnitude() * otherVector.magnitude());
+};

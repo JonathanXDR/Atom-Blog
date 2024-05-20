@@ -1,6 +1,7 @@
 ---
 title: Configuration API
 ---
+
 ### Configuration API
 
 #### Reading Config Settings
@@ -10,7 +11,7 @@ If you are writing a package that you want to make configurable, you'll need to 
 ```javascript
 // read a value with `config.get`
 if (atom.config.get("editor.showInvisibles")) {
-  this.showInvisibles()
+  this.showInvisibles();
 }
 ```
 
@@ -43,7 +44,7 @@ The `atom.config` database is populated on startup from <span class="platform-ma
 
 ```javascript
 // basic key update
-atom.config.set("core.showInvisibles", true)
+atom.config.set("core.showInvisibles", true);
 ```
 
 If you're exposing package configuration via specific key paths, you'll want to associate them with a schema in your package's main module. Read more about schemas in the [Config API documentation](https://atom.io/docs/api/latest/Config).

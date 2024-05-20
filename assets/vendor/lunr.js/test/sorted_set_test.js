@@ -1,118 +1,121 @@
-module('lunr.SortedSet')
+module("lunr.SortedSet");
 
-test('adding an element that doesn\'t exist into the set', function () {
-  var set = new lunr.SortedSet
+test("adding an element that doesn't exist into the set", function () {
+  var set = new lunr.SortedSet();
 
-  equal(set.length, 0)
-  set.add('foo')
-  equal(set.length, 1)
-})
+  equal(set.length, 0);
+  set.add("foo");
+  equal(set.length, 1);
+});
 
-test('adding an element that does exist into the set', function () {
-  var set = new lunr.SortedSet
-  set.add('foo')
-  equal(set.length, 1)
+test("adding an element that does exist into the set", function () {
+  var set = new lunr.SortedSet();
+  set.add("foo");
+  equal(set.length, 1);
 
-  set.add('foo')
-  equal(set.length, 1)
-})
+  set.add("foo");
+  equal(set.length, 1);
+});
 
-test('sort is maintained when adding elements to the set', function () {
-  var set = new lunr.SortedSet
+test("sort is maintained when adding elements to the set", function () {
+  var set = new lunr.SortedSet();
 
-  set.add('b')
-  set.add('d')
-  set.add('a')
-  set.add('c')
+  set.add("b");
+  set.add("d");
+  set.add("a");
+  set.add("c");
 
-  deepEqual(set.elements, ['a', 'b', 'c', 'd'])
-})
+  deepEqual(set.elements, ["a", "b", "c", "d"]);
+});
 
-test('adding more than one element to the set in one go', function () {
-  var set = new lunr.SortedSet
-  set.add('foo', 'bar', 'baz', 'foo')
-  equal(set.length, 3)
-})
+test("adding more than one element to the set in one go", function () {
+  var set = new lunr.SortedSet();
+  set.add("foo", "bar", "baz", "foo");
+  equal(set.length, 3);
+});
 
-test('converting to an array', function () {
-  var set = new lunr.SortedSet
-  set.add('foo', 'bar', 'baz')
-  deepEqual(set.toArray(), ['bar', 'baz', 'foo'])
-})
+test("converting to an array", function () {
+  var set = new lunr.SortedSet();
+  set.add("foo", "bar", "baz");
+  deepEqual(set.toArray(), ["bar", "baz", "foo"]);
+});
 
-test('mapping the set', function () {
-  var set = new lunr.SortedSet, a = []
+test("mapping the set", function () {
+  var set = new lunr.SortedSet(),
+    a = [];
 
-  set.add('foo', 'bar')
+  set.add("foo", "bar");
 
-  set.forEach(function (t) { a.push(t) })
+  set.forEach(function (t) {
+    a.push(t);
+  });
 
-  deepEqual(a, ['bar', 'foo'])
-})
+  deepEqual(a, ["bar", "foo"]);
+});
 
-test('getting the index of an item in the set', function () {
-  var set = new lunr.SortedSet
+test("getting the index of an item in the set", function () {
+  var set = new lunr.SortedSet();
 
-  equal(set.indexOf('non member'), -1)
+  equal(set.indexOf("non member"), -1);
 
-  set.add('foo')
+  set.add("foo");
 
-  equal(set.indexOf('foo'), 0)
-  equal(set.indexOf('non member'), -1)
+  equal(set.indexOf("foo"), 0);
+  equal(set.indexOf("non member"), -1);
 
-  set.add('bar')
+  set.add("bar");
 
-  equal(set.indexOf('foo'), 1)
-  equal(set.indexOf('bar'), 0)
-  equal(set.indexOf('non member'), -1)
-})
+  equal(set.indexOf("foo"), 1);
+  equal(set.indexOf("bar"), 0);
+  equal(set.indexOf("non member"), -1);
+});
 
-test('intersecting this set with another set', function () {
-  var set1 = new lunr.SortedSet,
-      set2 = new lunr.SortedSet,
-      setIntersect
+test("intersecting this set with another set", function () {
+  var set1 = new lunr.SortedSet(),
+    set2 = new lunr.SortedSet(),
+    setIntersect;
 
-  set1.add('foo', 'bar')
-  set2.add('baz', 'foo')
+  set1.add("foo", "bar");
+  set2.add("baz", "foo");
 
-  setIntersect = set1.intersect(set2)
+  setIntersect = set1.intersect(set2);
 
-  ok(setIntersect.indexOf('foo') > -1)
-  ok(setIntersect.indexOf('bar') == -1)
-  ok(setIntersect.indexOf('baz') == -1)
-})
+  ok(setIntersect.indexOf("foo") > -1);
+  ok(setIntersect.indexOf("bar") == -1);
+  ok(setIntersect.indexOf("baz") == -1);
+});
 
-test('unioning this set with another set', function () {
-  var set1 = new lunr.SortedSet,
-      set2 = new lunr.SortedSet,
-      setUnion
+test("unioning this set with another set", function () {
+  var set1 = new lunr.SortedSet(),
+    set2 = new lunr.SortedSet(),
+    setUnion;
 
-  set1.add('foo', 'bar')
-  set2.add('baz', 'foo')
+  set1.add("foo", "bar");
+  set2.add("baz", "foo");
 
-  setUnion = set1.union(set2)
+  setUnion = set1.union(set2);
 
-  ok(setUnion.indexOf('foo') > -1)
-  ok(setUnion.indexOf('bar') > -1)
-  ok(setUnion.indexOf('baz') > -1)
+  ok(setUnion.indexOf("foo") > -1);
+  ok(setUnion.indexOf("bar") > -1);
+  ok(setUnion.indexOf("baz") > -1);
 
-  equal(setUnion.length ,3)
-})
+  equal(setUnion.length, 3);
+});
 
-test('serialising', function () {
-  var emptySet = new lunr.SortedSet,
-      nonEmptySet = new lunr.SortedSet
+test("serialising", function () {
+  var emptySet = new lunr.SortedSet(),
+    nonEmptySet = new lunr.SortedSet();
 
-  nonEmptySet.add(1,2,3,4)
+  nonEmptySet.add(1, 2, 3, 4);
 
-  deepEqual(emptySet.toJSON(), [])
-  deepEqual(nonEmptySet.toJSON(), [1,2,3,4])
-})
+  deepEqual(emptySet.toJSON(), []);
+  deepEqual(nonEmptySet.toJSON(), [1, 2, 3, 4]);
+});
 
-test('loading serialised dump', function () {
-  var serialisedData = [1,2,3,4],
-      set = lunr.SortedSet.load(serialisedData)
+test("loading serialised dump", function () {
+  var serialisedData = [1, 2, 3, 4],
+    set = lunr.SortedSet.load(serialisedData);
 
-  equal(set.length, 4)
-  deepEqual(set.elements, [1,2,3,4])
-})
+  equal(set.length, 4);
+  deepEqual(set.elements, [1, 2, 3, 4]);
+});

@@ -1,12 +1,13 @@
 ---
 title: Find and Replace
 ---
+
 ### Find and Replace
 
 Finding and replacing text in your file or project is quick and easy in Atom.
 
-* <kbd class="platform-mac">Cmd+F</kbd><kbd class="platform-windows platform-linux">Ctrl+F</kbd> - Search within a buffer
-* <kbd class="platform-mac">Cmd+Shift+F</kbd><kbd class="platform-windows platform-linux">Ctrl+Shift+F</kbd> - Search the entire project
+- <kbd class="platform-mac">Cmd+F</kbd><kbd class="platform-windows platform-linux">Ctrl+F</kbd> - Search within a buffer
+- <kbd class="platform-mac">Cmd+Shift+F</kbd><kbd class="platform-windows platform-linux">Ctrl+Shift+F</kbd> - Search the entire project
 
 If you launch either of those commands, you'll be greeted with the Find and Replace panel at the bottom of your screen.
 
@@ -20,7 +21,7 @@ If you type a string in the replacement text box, you can replace matches with a
 
 **Note:** Atom uses JavaScript regular expressions to perform regular expression searches.
 
-When doing a regular expression search, the replacement syntax to refer back to search groups is  $1, $2, … $&. Refer to JavaScript's [guide to regular expressions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions) to learn more about regular expression syntax you can use in Atom.
+When doing a regular expression search, the replacement syntax to refer back to search groups is $1, $2, … $&. Refer to JavaScript's [guide to regular expressions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions) to learn more about regular expression syntax you can use in Atom.
 
 {{/note}}
 

@@ -1,6 +1,7 @@
 ---
 title: I am unable to update to the latest version of Atom on macOS. How do I fix this?
 ---
+
 ### I am unable to update to the latest version of Atom on macOS. How do I fix this?
 
 Atom shows there is a new version available but the version fails to install. You might have an error message showing a permissions error for example:
@@ -11,9 +12,9 @@ or it will say downloading but forever loops without restarting or updating.
 
 You need to fix one or more of the following directories:
 
-* `/Applications/Atom.app/`
-* `~/Library/Caches/com.github.atom.ShipIt`
-* `~/Library/Application Support/com.github.atom.ShipIt`
+- `/Applications/Atom.app/`
+- `~/Library/Caches/com.github.atom.ShipIt`
+- `~/Library/Application Support/com.github.atom.ShipIt`
 
 Do the following:
 

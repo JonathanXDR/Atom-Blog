@@ -1,6 +1,7 @@
 ---
 title: Debugging
 ---
+
 ### Debugging
 
 Atom provides several tools to help you understand unexpected behavior and debug problems. This guide describes some of those tools and a few approaches to help you debug and provide more helpful information when [submitting issues](https://github.com/atom/atom/blob/master/CONTRIBUTING.md#submitting-issues):
@@ -11,7 +12,7 @@ You might be running into an issue which was already fixed in a more recent vers
 
 If you're using a released version, check which version of Atom you're using:
 
-``` command-line
+```command-line
 $ atom --version
 > Atom    : 1.8.0
 > Electron: 0.36.8
@@ -47,7 +48,7 @@ A large part of Atom's functionality comes from packages you can install. Atom w
 
 To determine if that is happening, start Atom from the terminal in safe mode:
 
-``` command-line
+```command-line
 $ atom --safe
 ```
 
@@ -63,13 +64,13 @@ Atom saves a number of things about your environment when you exit in order to r
 
 {{#danger}}
 
-:rotating_light: **Danger:** Clearing the saved state permanently destroys any state that Atom has saved *across all projects*. This includes unsaved changes to files you may have been editing in all projects. This is a destructive action.
+:rotating*light: **Danger:** Clearing the saved state permanently destroys any state that Atom has saved \_across all projects*. This includes unsaved changes to files you may have been editing in all projects. This is a destructive action.
 
 {{/danger}}
 
 Clearing the saved state can be done by opening a terminal and executing:
 
-``` command-line
+```command-line
 $ atom --clear-window-state
 ```
 
@@ -79,7 +80,7 @@ In some cases, you may want to reset Atom to "factory defaults", in other words 
 
 {{#mac}}
 
-``` command-line
+```command-line
 $ mv ~/.atom ~/.atom-backup
 ```
 
@@ -87,7 +88,7 @@ $ mv ~/.atom ~/.atom-backup
 
 {{#linux}}
 
-``` command-line
+```command-line
 $ mv ~/.atom ~/.atom-backup
 ```
 
@@ -95,7 +96,7 @@ $ mv ~/.atom ~/.atom-backup
 
 {{#windows}}
 
-``` command-line
+```command-line
 $ rename %USERPROFILE%\.atom .atom-backup
 ```
 
@@ -113,7 +114,7 @@ Once that is complete, you can launch Atom as normal. Everything will be just as
 
 If you develop or contribute to Atom packages, there may be left-over packages linked to your `~/.atom/packages` or `~/.atom/dev/packages` directories. You can use the `apm links` command to list all linked packages:
 
-``` command-line
+```command-line
 $ apm links
 > /Users/octocat/.atom/dev/packages (0)
 > └── (no links)
@@ -123,7 +124,7 @@ $ apm links
 
 You can remove links using the `apm unlink` command:
 
-``` command-line
+```command-line
 $ apm unlink color-picker
 > Unlinking /Users/octocat/.atom/packages/color-picker ✓
 ```
@@ -174,21 +175,21 @@ Show the keybinding resolver with <kbd class="platform-mac">Cmd+.</kbd><kbd clas
 
 The Keybinding Resolver shows you a list of keybindings that exist for the key combination, where each item in the list has the following:
 
-* the command for the keybinding
-* the CSS selector used to define the context in which the keybinding is valid
-* the file in which the keybinding is defined
+- the command for the keybinding
+- the CSS selector used to define the context in which the keybinding is valid
+- the file in which the keybinding is defined
 
 The keybindings are listed in two colors. All the keybindings that are matched but not executed are shown in gray. The one that is executed, if any, is shown in green. If the command you wanted to trigger isn't listed, then a keybinding for that command hasn't been loaded.
 
 If multiple keybindings are matched, Atom determines which keybinding will be executed based on the [specificity of the selectors and the order in which they were loaded](/behind-atom/sections/keymaps-in-depth/#specificity-and-cascade-order). If the command you wanted to trigger is listed in the Keybinding Resolver, but wasn't the one that was executed, this is normally explained by one of two causes:
 
-* The key combination was not used in the context defined by the keybinding's selector
+- The key combination was not used in the context defined by the keybinding's selector
 
-    For example, you can't trigger the keybinding for the `tree-view:add-file` command if the Tree View is not focused.
+  For example, you can't trigger the keybinding for the `tree-view:add-file` command if the Tree View is not focused.
 
-* There is another keybinding that took precedence
+- There is another keybinding that took precedence
 
-    This often happens when you install a package which defines keybindings that conflict with existing keybindings. If the package's keybindings have selectors with higher specificity or were loaded later, they'll have priority over existing ones.
+  This often happens when you install a package which defines keybindings that conflict with existing keybindings. If the package's keybindings have selectors with higher specificity or were loaded later, they'll have priority over existing ones.
 
 Atom loads core Atom keybindings and package keybindings first, and user-defined keybindings last. Since user-defined keybindings are loaded last, you can use your `keymap.cson` file to tweak the keybindings and sort out problems like these. See the [Keymaps in Depth section](/behind-atom/sections/keymaps-in-depth/) for more information.
 
@@ -206,11 +207,11 @@ When an unexpected error occurs in Atom, you will normally see a red notificatio
 
 ![Exception Notification](../../images/exception-notification.png)
 
-Not all errors are logged with a notification so if you suspect you're experiencing an error but there's no notification, you can also look for errors in the developer tools Console tab.  To access the Console tab, press <kbd class="platform-mac">Alt-Cmd-I</kbd><kbd class="platform-windows platform-linux">Ctrl-Shift-I</kbd> to open developer tools and then click the Console tab:
+Not all errors are logged with a notification so if you suspect you're experiencing an error but there's no notification, you can also look for errors in the developer tools Console tab. To access the Console tab, press <kbd class="platform-mac">Alt-Cmd-I</kbd><kbd class="platform-windows platform-linux">Ctrl-Shift-I</kbd> to open developer tools and then click the Console tab:
 
 ![DevTools Error](../../images/devtools-error.png)
 
-If there are multiple errors, you can scroll down to the bottom of the panel to see the most recent error.  Or while reproducing an error, you can right click in the Console tab panel, select `Clear console` to remove all Console output, and then reproduce the error to see what errors are logged to the Console tab.
+If there are multiple errors, you can scroll down to the bottom of the panel to see the most recent error. Or while reproducing an error, you can right click in the Console tab panel, select `Clear console` to remove all Console output, and then reproduce the error to see what errors are logged to the Console tab.
 
 {{#note}}
 
@@ -251,10 +252,10 @@ If Atom is taking a long time to start, you can use the [Timecop package](https:
 
 Timecop displays the following information:
 
-* Atom startup times
-* File compilation times
-* Package loading and activation times
-* Theme loading and activation times
+- Atom startup times
+- File compilation times
+- Package loading and activation times
+- Theme loading and activation times
 
 If a specific package has high load or activation times, you might consider reporting an Issue to the maintainers. You can also disable the package to potentially improve future startup times.
 
@@ -280,7 +281,7 @@ To learn more, check out the [Chrome documentation on CPU profiling](https://dev
 
 If the time for loading the window looks high, you can create a CPU profile for that period using the `--profile-startup` command line flag when starting Atom:
 
-``` command-line
+```command-line
 $ atom --profile-startup .
 ```
 
@@ -302,7 +303,7 @@ Check out the pre-requisites in the [build instructions](https://github.com/atom
 
 If you encounter flickering or other rendering issues, you can stop Atom from using your Graphics Processing Unit (GPU) with the `--disable-gpu` Chromium flag to see if the fault lies with your GPU:
 
-``` command-line
+```command-line
 $ atom --disable-gpu
 ```
 
@@ -310,7 +311,7 @@ Chromium (and thus Atom) normally uses the GPU to accelerate drawing parts of th
 
 Two other Chromium flags that are useful for debugging are `--enable-gpu-rasterization` and `--force-gpu-rasterization`:
 
-``` command-line
+```command-line
 $ atom --enable-gpu-rasterization --force-gpu-rasterization
 ```
 
@@ -318,6 +319,6 @@ $ atom --enable-gpu-rasterization --force-gpu-rasterization
 
 Be sure to use Chromium flags at the end of the terminal call if you want to use other Atom flags as they will not be executed after the Chromium flags e.g.:
 
-``` command-line
+```command-line
 $ atom --safe --enable-gpu-rasterization --force-gpu-rasterization
 ```

@@ -1,6 +1,7 @@
 ---
 title: What is this line on the right in the editor view?
 ---
+
 ### What is this line on the right in the editor view?
 
 ![Wrap guide line](../../images/wrap-guide-line.png)

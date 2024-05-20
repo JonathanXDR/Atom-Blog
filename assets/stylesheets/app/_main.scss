@@ -23,7 +23,7 @@ body {
   margin: 0 auto;
   padding-left: 40px;
   padding-right: 40px;
-  overflow:hidden;
+  overflow: hidden;
 
   &.wide {
     width: 1060px;
@@ -50,18 +50,27 @@ $footerHeight: 55px;
 }
 
 .footer-pad {
-  height: $footerHeight+40;
+  height: $footerHeight + 40;
 }
 
 a {
   color: $greenDark;
   text-decoration: none;
 
-  &:hover { text-decoration: underline; }
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
-h1, h2, h3, h4, h5, h6 {
-  &.center { text-align: center; }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  &.center {
+    text-align: center;
+  }
   color: #66595c;
 }
 
@@ -143,7 +152,7 @@ hr {
   height: 24px;
   margin: 4px 8px 4px 0;
 
-  @include background-image-retina('../images/logo-small', 'png', 114px, 24px);
+  @include background-image-retina("../images/logo-small", "png", 114px, 24px);
 }
 
 .header {
@@ -173,10 +182,10 @@ hr {
     white-space: nowrap;
     overflow: hidden;
 
-    @include background-image-retina('logo', 'png', 290px, 60px);
+    @include background-image-retina("logo", "png", 290px, 60px);
   }
 
-  .github-log-in-button{
+  .github-log-in-button {
     float: right;
     margin-top: 18px;
     margin-left: 20px;
@@ -196,13 +205,15 @@ hr {
     height: 33px;
     vertical-align: top;
 
-    &:last-child { padding-right: 0; }
+    &:last-child {
+      padding-right: 0;
+    }
   }
 
   a {
     padding: 5px;
     display: inline-block;
-    @include transition(color .2s);
+    @include transition(color 0.2s);
 
     &:hover {
       text-decoration: none;
@@ -218,12 +229,18 @@ hr {
   a {
     color: $brownDark;
 
-    &:hover { text-decoration: none; }
+    &:hover {
+      text-decoration: none;
+    }
   }
 
-  span { color: $brownDark; }
+  span {
+    color: $brownDark;
+  }
 
-  .footer-right { float: right; }
+  .footer-right {
+    float: right;
+  }
 
   .footer-left {
     float: left;
@@ -290,10 +307,17 @@ hr {
     }
   }
 
-  .left, .right { width: 50%; }
+  .left,
+  .right {
+    width: 50%;
+  }
 
-  .sidebar { width: 33.3%; }
-  .main-column { width: 66.6%; }
+  .sidebar {
+    width: 33.3%;
+  }
+  .main-column {
+    width: 66.6%;
+  }
 
   &.middle-align .column {
     vertical-align: middle;
@@ -389,7 +413,8 @@ hr {
   font-weight: 300;
 }
 
-.thirds, .halves {
+.thirds,
+.halves {
   overflow: hidden;
   margin-right: -20px;
 

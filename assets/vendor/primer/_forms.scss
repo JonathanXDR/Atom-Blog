@@ -41,7 +41,9 @@ textarea {
   &.focus,
   &:focus {
     border-color: #51a7e8;
-    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.075), 0 0 5px rgba(81, 167, 232, 0.5);
+    box-shadow:
+      inset 0 1px 2px rgba(0, 0, 0, 0.075),
+      0 0 5px rgba(81, 167, 232, 0.5);
   }
 }
 
@@ -58,7 +60,9 @@ input.input-contrast,
 .input-contrast {
   background-color: #fafafa;
 
-  &:focus { background-color: #fff; }
+  &:focus {
+    background-color: #fff;
+  }
 }
 
 // Custom styling for HTML5 validation bubbles (WebKit only)
@@ -146,11 +150,17 @@ dl.form {
     }
 
     input {
-      &.shorter { width: 130px; }
+      &.shorter {
+        width: 130px;
+      }
 
-      &.short { width: 250px; }
+      &.short {
+        width: 250px;
+      }
 
-      &.long { width: 100%; }
+      &.long {
+        width: 100%;
+      }
     }
 
     // Textarea
@@ -168,9 +178,13 @@ dl.form {
     h4 {
       margin: 4px 0 0;
 
-      &.is-error { color: $brand-red; }
+      &.is-error {
+        color: $brand-red;
+      }
 
-      &.is-success { color: $brand-green; }
+      &.is-success {
+        color: $brand-green;
+      }
 
       + p.note {
         margin-top: 0;
@@ -318,7 +332,6 @@ dl.form {
   }
 }
 
-
 // Checkboxes and Radiobuttons
 //
 // For checkboxes and radio button selections.
@@ -328,7 +341,6 @@ dl.form {
   vertical-align: middle;
 
   label {
-
     em.highlight {
       position: relative;
       left: -4px;
@@ -339,8 +351,8 @@ dl.form {
     }
   }
 
-  input[type=checkbox],
-  input[type=radio] {
+  input[type="checkbox"],
+  input[type="radio"] {
     float: left;
     margin: 2px 0 0 -20px;
     vertical-align: middle;
@@ -354,7 +366,6 @@ dl.form {
     color: #666;
   }
 }
-
 
 // Field groups
 //
@@ -387,9 +398,10 @@ dl.form {
     margin: 28px 25px 0 -20px;
   }
 
-  select { margin-top: 5px; }
+  select {
+    margin-top: 5px;
+  }
 }
-
 
 // Hide the up/down buttons in <input type="number"> in the login form, the
 // input is used for two-factor auth codes, type="number" makes it more usable
@@ -399,7 +411,6 @@ input::-webkit-inner-spin-button {
   margin: 0;
   -webkit-appearance: none;
 }
-
 
 // Input groups
 .input-group {
@@ -480,11 +491,14 @@ input::-webkit-inner-spin-button {
     line-height: 1.5;
   }
 
-  strong { color: #000; }
+  strong {
+    color: #000;
+  }
 
-  a { font-weight: bold; }
+  a {
+    font-weight: bold;
+  }
 }
-
 
 // Inline verification
 //
@@ -504,7 +518,6 @@ input::-webkit-inner-spin-button {
   content: "\f02d"; // octicon-x
 }
 
-
 // Custom select
 //
 // Apply `.select` to any `<select>` element for custom styles.
@@ -514,7 +527,9 @@ input::-webkit-inner-spin-button {
   max-width: 100%;
   padding: 7px 24px 7px 8px;
   vertical-align: middle;
-  background: #fff url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAUCAMAAACzvE1FAAAADFBMVEUzMzMzMzMzMzMzMzMKAG/3AAAAA3RSTlMAf4C/aSLHAAAAPElEQVR42q3NMQ4AIAgEQTn//2cLdRKppSGzBYwzVXvznNWs8C58CiussPJj8h6NwgorrKRdTvuV9v16Afn0AYFOB7aYAAAAAElFTkSuQmCC) no-repeat right 8px center;
+  background: #fff
+    url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAUCAMAAACzvE1FAAAADFBMVEUzMzMzMzMzMzMzMzMKAG/3AAAAA3RSTlMAf4C/aSLHAAAAPElEQVR42q3NMQ4AIAgEQTn//2cLdRKppSGzBYwzVXvznNWs8C58CiussPJj8h6NwgorrKRdTvuV9v16Afn0AYFOB7aYAAAAAElFTkSuQmCC)
+    no-repeat right 8px center;
   background-size: 8px 10px;
   box-shadow: inset 0 -1px 2px rgba(0, 0, 0, 0.075);
   // Have to include vendor prefixes as the `appearance` property isn't part of the CSS spec.
@@ -529,7 +544,9 @@ input::-webkit-inner-spin-button {
   &:focus {
     outline: none;
     border-color: #51a7e8;
-    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.075), 0 0 5px rgba(81, 167, 232, 0.5);
+    box-shadow:
+      inset 0 1px 2px rgba(0, 0, 0, 0.075),
+      0 0 5px rgba(81, 167, 232, 0.5);
   }
 
   // Hides the default caret in IE11

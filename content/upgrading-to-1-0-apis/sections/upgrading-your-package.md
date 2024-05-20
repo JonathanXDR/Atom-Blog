@@ -1,6 +1,7 @@
 ---
 title: Upgrading Your Package
 ---
+
 ### Upgrading Your Package
 
 This document will guide you through the large bits of upgrading your package to work with 1.0 APIs.
@@ -225,8 +226,8 @@ class ResultsView extends ScrollView
     disposable.dispose()
 ```
 
-* Check out [an example](https://github.com/atom/find-and-replace/pull/311/files#diff-9) from find-and-replace.
-* See the [docs](https://github.com/atom/atom-space-pen-views#scrollview) for all the options.
+- Check out [an example](https://github.com/atom/find-and-replace/pull/311/files#diff-9) from find-and-replace.
+- See the [docs](https://github.com/atom/atom-space-pen-views#scrollview) for all the options.
 
 ##### Upgrading classes extending SelectListView
 
@@ -308,8 +309,8 @@ class CommandPaletteView extends SelectListView
     @panel?.hide()
 ```
 
-* And check out the [conversion of `CommandPaletteView`](https://github.com/atom/command-palette/pull/19/files) as a real-world example.
-* See the [`SelectListView` docs](https://github.com/atom/atom-space-pen-views#selectlistview) for all options.
+- And check out the [conversion of `CommandPaletteView`](https://github.com/atom/command-palette/pull/19/files) as a real-world example.
+- See the [`SelectListView` docs](https://github.com/atom/atom-space-pen-views#selectlistview) for all options.
 
 #### Using the model layer rather than the view layer
 

@@ -6,7 +6,7 @@
 /**
  * A namespace containing utils for the rest of the lunr library
  */
-lunr.utils = {}
+lunr.utils = {};
 
 /**
  * Print a warning message to the console.
@@ -17,8 +17,7 @@ lunr.utils = {}
 lunr.utils.warn = (function (global) {
   return function (message) {
     if (global.console && console.warn) {
-      console.warn(message)
+      console.warn(message);
     }
-  }
-})(this)
-
+  };
+})(this);

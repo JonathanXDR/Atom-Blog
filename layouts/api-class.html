@@ -1,4 +1,4 @@
-<!DOCTYPE HTML>
+<!doctype html>
 <html lang="en">
   <head>
     <%= renderp '/includes/meta.html' %>
@@ -10,7 +10,8 @@
         <%= renderp '/includes/search.html', :version => version %>
 
         <div class="toc">
-          <%= renderp '/includes/toc.html', :heading => 'h4', :title => @item[:title], :version => version %>
+          <%= renderp '/includes/toc.html', :heading => 'h4', :title =>
+          @item[:title], :version => version %>
         </div>
 
         <div class="content-column">
@@ -20,11 +21,9 @@
           </h1>
 
           <div class="document-content">
-            <% section = lookup_section('toc', @item[:title]) %>
-            <%= yield %>
+            <% section = lookup_section('toc', @item[:title]) %> <%= yield %>
           </div>
         </div>
-
       </div>
 
       <div class="footer-pad"></div>

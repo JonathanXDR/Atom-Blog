@@ -1,6 +1,7 @@
 ---
 title: "Package: Active Editor Info"
 ---
+
 ### Package: Active Editor Info
 
 We saw in our [Word Count](/hacking-atom/sections/package-word-count/) package how we could show information in a modal panel. However, panels aren't the only way to extend Atom's UI—you can also add items to the workspace. These items can be dragged to new locations (for example, one of the docks on the edges of the window), and Atom will restore them the next time you open the project. This system is used by Atom's tree view, as well as by third party packages like [Nuclide](https://nuclide.io) for its console, debugger, outline view, and diagnostics (linter results).
@@ -13,42 +14,41 @@ To begin, press <kbd class="platform-mac">Cmd+Shift+P</kbd><kbd class="platform-
 
 #### Add an Opener
 
-Now let's edit the package files to show our view in a workspace item instead of a modal panel. The way we do this is by registering an *opener* with Atom. Openers are just functions that accept a URI and return a view (if it's a URI that the opener knows about). When you call `atom.workspace.open()`, Atom will go through all of its openers until it finds one that can handle the URI you passed.
+Now let's edit the package files to show our view in a workspace item instead of a modal panel. The way we do this is by registering an _opener_ with Atom. Openers are just functions that accept a URI and return a view (if it's a URI that the opener knows about). When you call `atom.workspace.open()`, Atom will go through all of its openers until it finds one that can handle the URI you passed.
 
 Let's open `lib/active-editor-info.js` and edit our `activate()` method to register an opener:
 
 ```js
-'use babel';
+"use babel";
 
-import ActiveEditorInfoView from './active-editor-info-view';
-import {CompositeDisposable, Disposable} from 'atom';
+import ActiveEditorInfoView from "./active-editor-info-view";
+import { CompositeDisposable, Disposable } from "atom";
 
 export default {
-
   subscriptions: null,
 
   activate(state) {
     this.subscriptions = new CompositeDisposable(
       // Add an opener for our view.
-      atom.workspace.addOpener(uri => {
-        if (uri === 'atom://active-editor-info') {
+      atom.workspace.addOpener((uri) => {
+        if (uri === "atom://active-editor-info") {
           return new ActiveEditorInfoView();
         }
       }),
 
       // Register command that toggles this view
-      atom.commands.add('atom-workspace', {
-        'active-editor-info:toggle': () => this.toggle()
+      atom.commands.add("atom-workspace", {
+        "active-editor-info:toggle": () => this.toggle(),
       }),
 
       // Destroy any ActiveEditorInfoViews when the package is deactivated.
       new Disposable(() => {
-        atom.workspace.getPaneItems().forEach(item => {
+        atom.workspace.getPaneItems().forEach((item) => {
           if (item instanceof ActiveEditorInfoView) {
             item.destroy();
           }
         });
-      })
+      }),
     );
   },
 
@@ -57,9 +57,8 @@ export default {
   },
 
   toggle() {
-    console.log('Toggle it!')
-  }
-
+    console.log("Toggle it!");
+  },
 };
 ```
 
@@ -121,13 +120,15 @@ Now our item will appear in the right dock initially and users will only be able
 Now that we have our view all wired up, let's update it to show some information about the active text editor. Add this to the constructor:
 
 ```js
-this.subscriptions = atom.workspace.getCenter().observeActivePaneItem(item => {
-  if (!atom.workspace.isTextEditor(item)) {
-    message.innerText = 'Open a file to see important information about it.';
-    return;
-  }
-  message.innerHTML = `
-    <h2>${item.getFileName() || 'untitled'}</h2>
+this.subscriptions = atom.workspace
+  .getCenter()
+  .observeActivePaneItem((item) => {
+    if (!atom.workspace.isTextEditor(item)) {
+      message.innerText = "Open a file to see important information about it.";
+      return;
+    }
+    message.innerHTML = `
+    <h2>${item.getFileName() || "untitled"}</h2>
     <ul>
       <li><b>Soft Wrap:</b> ${item.softWrapped}</li>
       <li><b>Tab Length:</b> ${item.getTabLength()}</li>
@@ -135,7 +136,7 @@ this.subscriptions = atom.workspace.getCenter().observeActivePaneItem(item => {
       <li><b>Line Count:</b> ${item.getLineCount()}</li>
     </ul>
   `;
-});
+  });
 ```
 
 Now whenever you open a text editor in the center, the view will update with some information about it.

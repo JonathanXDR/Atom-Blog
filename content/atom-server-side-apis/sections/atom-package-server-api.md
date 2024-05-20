@@ -110,7 +110,7 @@ Returns:
 
 Create a new package; requires authentication.
 
-The name and version will be fetched from the `package.json` file in the specified repository. The authenticating user *must* have access to the indicated repository.
+The name and version will be fetched from the `package.json` file in the specified repository. The authenticating user _must_ have access to the indicated repository.
 
 Parameters:
 
@@ -149,44 +149,44 @@ Requests made to the previous name will forward to the new name.
 Returns `package.json` with `dist` key added for e.g. tarball download:
 
 ```json
-  {
-    "bugs": {
-      "url": "https://github.com/thedaniel/test-package/issues"
-    },
-    "dependencies": {
-      "async": "~0.2.6",
-      "pegjs": "~0.7.0",
-      "season": "~0.13.0"
-    },
-    "description": "Expand snippets matching the current prefix with `tab`.",
-    "dist": {
-      "tarball": "https://codeload.github.com/..."
-    },
-    "engines": {
-      "atom": "*"
-    },
-    "main": "./lib/snippets",
-    "name": "thedaniel-test-package",
-    "publishConfig": {
-      "registry": "https://...",
-    },
-    "repository": {
-      "type": "git",
-      "url": "https://github.com/thedaniel/test-package.git"
-    },
-    "version": "0.6.0"
-  }
+{
+  "bugs": {
+    "url": "https://github.com/thedaniel/test-package/issues"
+  },
+  "dependencies": {
+    "async": "~0.2.6",
+    "pegjs": "~0.7.0",
+    "season": "~0.13.0"
+  },
+  "description": "Expand snippets matching the current prefix with `tab`.",
+  "dist": {
+    "tarball": "https://codeload.github.com/..."
+  },
+  "engines": {
+    "atom": "*"
+  },
+  "main": "./lib/snippets",
+  "name": "thedaniel-test-package",
+  "publishConfig": {
+    "registry": "https://..."
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thedaniel/test-package.git"
+  },
+  "version": "0.6.0"
+}
 ```
 
 ##### Creating a new package version
 
 ###### POST /api/packages/:package_name/versions
 
-Creates a new package version from a git tag; requires authentication. If `rename` is not `true`, the `name` field in `package.json` *must* match the current package name.
+Creates a new package version from a git tag; requires authentication. If `rename` is not `true`, the `name` field in `package.json` _must_ match the current package name.
 
 Parameters:
 
-- **tag** - A git tag for the version you'd like to create. It's important to note that the version name will not be taken from the tag, but from the `version` key in the `package.json` file at that ref. The authenticating user *must* have access to the package repository.
+- **tag** - A git tag for the version you'd like to create. It's important to note that the version name will not be taken from the tag, but from the `version` key in the `package.json` file at that ref. The authenticating user _must_ have access to the package repository.
 - **rename** - Boolean indicating whether this version contains a new name for the package.
 
 Returns:
@@ -246,8 +246,5 @@ List the users that have starred a package.
 Returns a list of user objects:
 
 ```json
-[
-  {"login":"aperson"},
-  {"login":"anotherperson"},
-]
+[{ "login": "aperson" }, { "login": "anotherperson" }]
 ```

@@ -1,11 +1,12 @@
 ---
 title: Why does macOS say that Atom wants to access my calendar, contacts, photos, etc.?
 ---
+
 ### Why does macOS say that Atom wants to access my calendar, contacts, photos, etc.?
 
 With macOS 10.14 Mojave, Apple introduced new privacy protections similar to the existing protections found in iOS. Whenever an application attempts to access the files inside certain newly-protected directories, macOS asks the user whether they want to allow the application to access the content in those directories. These new privacy protections apply to the directories that contain your calendars, contacts, photos, mail, messages, and Time Machine backups.
 
-Applications trigger these new macOS prompts when attempting to access these directories in any way. Simply attempting to *list* the files in one of these directories is enough to trigger these prompts. These protections even apply to Apple's own applications. For example, if you open `Terminal.app` and try to list the files in `~/Library/Calendars`, macOS shows a prompt saying, '"Terminal" would like access to your calendar.'
+Applications trigger these new macOS prompts when attempting to access these directories in any way. Simply attempting to _list_ the files in one of these directories is enough to trigger these prompts. These protections even apply to Apple's own applications. For example, if you open `Terminal.app` and try to list the files in `~/Library/Calendars`, macOS shows a prompt saying, '"Terminal" would like access to your calendar.'
 
 <img width="602" alt="screen shot 2018-10-03 at 14 04 40 pm" src="https://user-images.githubusercontent.com/2988/46432184-9bfe9f80-c71b-11e8-8916-e844b7f4110e.png">
 
@@ -17,7 +18,7 @@ Atom doesn't need access to these items, but you might unintentionally cause Ato
 
 Similarly, using [find-and-replace](https://flight-manual.atom.io/using-atom/sections/find-and-replace/) across the entire home directory will cause Atom to scan all files under your home directory.
 
-In addition to containing the files you're *intending* to edit inside Atom, your home directory also contains your files that have new OS-level protections in Mojave:
+In addition to containing the files you're _intending_ to edit inside Atom, your home directory also contains your files that have new OS-level protections in Mojave:
 
 - Calendar files (`~/Library/Calendars`)
 - Contacts files (`~/Library/Application\ Support/AddressBook`
@@ -30,7 +31,7 @@ Before letting Atom read these files, Mojave is understandably asking whether yo
 
 Most people don't use Atom to view or edit their calendar files, contact files, photo library, etc. If you don't intend to use Atom to view/edit these files, then Atom doesn't need access to them. If you see a prompt from macOS saying that Atom would like to access these items, simply click **Don't Allow**.
 
-#### What happens if I *allow* Atom to access my calendar, contacts, photos, etc.?
+#### What happens if I _allow_ Atom to access my calendar, contacts, photos, etc.?
 
 To Atom, these items are just files on disk. Atom treats them exactly like any other file you would view in Atom. Therefore, if you allow Atom to access these items, you'll be able to use Atom to browse the directories that contain these items, and you'll be able to view the files in those directories. That's it. Nothing more.
 

@@ -1,6 +1,7 @@
 ---
 title: "Package: Word Count"
 ---
+
 ### Package: Word Count
 
 Let's get started by writing a very simple package and looking at some of the tools needed to develop one effectively. We'll start by writing a package that tells you how many words are in the current buffer and display it in a small modal window.
@@ -13,7 +14,7 @@ You can run the generator by invoking the command palette and searching for "Gen
 
 {{#note}}
 
-**Note:** You may encounter a situation where your package is not loaded. That is because a new package using the same name as an actual package hosted on [atom.io](https://atom.io/packages) (e.g. "wordcount" and "word-count") is not being loaded as you expected. If you follow our suggestion above of using the `your-name-word-count` package name, you *should* be safe :grinning:
+**Note:** You may encounter a situation where your package is not loaded. That is because a new package using the same name as an actual package hosted on [atom.io](https://atom.io/packages) (e.g. "wordcount" and "word-count") is not being loaded as you expected. If you follow our suggestion above of using the `your-name-word-count` package name, you _should_ be safe :grinning:
 
 {{/note}}
 
@@ -40,22 +41,22 @@ Not every package will have (or need) all of these directories and the package g
 
 ##### `package.json`
 
-Similar to [Node modules](https://en.wikipedia.org/wiki/Npm_(software)), Atom packages contain a `package.json` file in their top-level directory. This file contains metadata about the package, such as the path to its "main" module, library dependencies, and manifests specifying the order in which its resources should be loaded.
+Similar to [Node modules](<https://en.wikipedia.org/wiki/Npm_(software)>), Atom packages contain a `package.json` file in their top-level directory. This file contains metadata about the package, such as the path to its "main" module, library dependencies, and manifests specifying the order in which its resources should be loaded.
 
 In addition to some of the regular [Node `package.json` keys](https://docs.npmjs.com/files/package.json) available, Atom `package.json` files have their own additions.
 
-* `main`: the path to the JavaScript file that's the entry point to your package. If this is missing, Atom will default to looking for an `index.coffee` or `index.js`.
-* `styles`: an Array of Strings identifying the order of the
-style sheets your package needs to load. If not specified, style sheets in the `styles` directory are added alphabetically.
-* `keymaps`: an Array of Strings identifying the order of the key mappings your package needs to load. If not specified, mappings in the `keymaps` directory are added alphabetically.
-* `menus`: an Array of Strings identifying the order of the menu mappings your package needs to load. If not specified, mappings in the `menus` directory are added alphabetically.
-* `snippets`: an Array of Strings identifying the order of the snippets your package needs to load. If not specified, snippets in the `snippets` directory are added alphabetically.
-* `activationCommands`: an Object identifying commands that trigger your package's activation. The keys are CSS selectors, the values are Arrays of Strings identifying the command. The loading of your package is delayed until one of these events is triggered within the associated scope defined by the CSS selector. If not specified, the `activate()` method of your main export will be called when your package is loaded.
-* `activationHooks`: an Array of Strings identifying hooks that trigger your package's activation. The loading of your package is delayed until one of these hooks are triggered. Currently, there are three activation hooks:
-  * `core:loaded-shell-environment` for when Atom has finished loading the shell environment variables
-  * `scope.name:root-scope-used` for when a file is opened from the specified language (e.g. `source.ruby:root-scope-used`)
-  * `language-package-name:grammar-used` for when a specific language package is used (e.g., `my-special-language-javascript:grammar-used`)
-* `workspaceOpeners`: An Array of Strings identifying URIs that trigger your package's activation. For example, say your package registers a custom opener for `atom://my-custom-panel`. By including that string in `workspaceOpeners`, your package will defer its activation until that URI is opened.
+- `main`: the path to the JavaScript file that's the entry point to your package. If this is missing, Atom will default to looking for an `index.coffee` or `index.js`.
+- `styles`: an Array of Strings identifying the order of the
+  style sheets your package needs to load. If not specified, style sheets in the `styles` directory are added alphabetically.
+- `keymaps`: an Array of Strings identifying the order of the key mappings your package needs to load. If not specified, mappings in the `keymaps` directory are added alphabetically.
+- `menus`: an Array of Strings identifying the order of the menu mappings your package needs to load. If not specified, mappings in the `menus` directory are added alphabetically.
+- `snippets`: an Array of Strings identifying the order of the snippets your package needs to load. If not specified, snippets in the `snippets` directory are added alphabetically.
+- `activationCommands`: an Object identifying commands that trigger your package's activation. The keys are CSS selectors, the values are Arrays of Strings identifying the command. The loading of your package is delayed until one of these events is triggered within the associated scope defined by the CSS selector. If not specified, the `activate()` method of your main export will be called when your package is loaded.
+- `activationHooks`: an Array of Strings identifying hooks that trigger your package's activation. The loading of your package is delayed until one of these hooks are triggered. Currently, there are three activation hooks:
+  - `core:loaded-shell-environment` for when Atom has finished loading the shell environment variables
+  - `scope.name:root-scope-used` for when a file is opened from the specified language (e.g. `source.ruby:root-scope-used`)
+  - `language-package-name:grammar-used` for when a specific language package is used (e.g., `my-special-language-javascript:grammar-used`)
+- `workspaceOpeners`: An Array of Strings identifying URIs that trigger your package's activation. For example, say your package registers a custom opener for `atom://my-custom-panel`. By including that string in `workspaceOpeners`, your package will defer its activation until that URI is opened.
 
 The `package.json` in the package we've just generated looks like this currently:
 
@@ -73,8 +74,7 @@ The `package.json` in the package we've just generated looks like this currently
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
   },
-  "dependencies": {
-  }
+  "dependencies": {}
 }
 ```
 
@@ -86,14 +86,16 @@ If you wanted to use activationHooks, you might have:
   "main": "./lib/your-name-word-count",
   "version": "0.0.0",
   "description": "A short description of your package",
-  "activationHooks": ["language-javascript:grammar-used", "language-coffee-script:grammar-used"],
+  "activationHooks": [
+    "language-javascript:grammar-used",
+    "language-coffee-script:grammar-used"
+  ],
   "repository": "https://github.com/atom/your-name-word-count",
   "license": "MIT",
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
   },
-  "dependencies": {
-  }
+  "dependencies": {}
 }
 ```
 
@@ -113,11 +115,11 @@ Your package's top-level module is a singleton object that manages the lifecycle
 
 Your package's top-level module can implement the following basic methods:
 
-* `activate(state)`: This **optional** method is called when your package is activated. It is passed the state data from the last time the window was serialized if your module implements the `serialize()` method. Use this to do initialization work when your package is started (like setting up DOM elements or binding events). If this method returns a promise the package will be considered loading until the promise resolves (or rejects).
-* `initialize(state)`: (Available in Atom 1.14 and above) This **optional** method is similar to `activate()` but is called earlier. Whereas activation occurs after the workspace has been deserialized (and can therefore happen after [your package's deserializers](/behind-atom/sections/serialization-in-atom/#serialization-methods) have been called), `initialize()` is guaranteed to be called before everything. Use `activate()` if you want to be sure that the workspace is ready; use `initialize()` if you need to do some setup prior to your deserializers or view providers being invoked.
-* `serialize()`: This **optional** method is called when the window is shutting down, allowing you to return JSON to represent the state of your component. When the window is later restored, the data you returned is passed to your module's `activate` method so you can restore your view to where the user left
-off.
-* `deactivate()`: This **optional** method is called when the window is shutting down and when the package is disabled. If your package is watching any files or holding external resources in any other way, release them here. You should also dispose of all subscriptions you're holding on to.
+- `activate(state)`: This **optional** method is called when your package is activated. It is passed the state data from the last time the window was serialized if your module implements the `serialize()` method. Use this to do initialization work when your package is started (like setting up DOM elements or binding events). If this method returns a promise the package will be considered loading until the promise resolves (or rejects).
+- `initialize(state)`: (Available in Atom 1.14 and above) This **optional** method is similar to `activate()` but is called earlier. Whereas activation occurs after the workspace has been deserialized (and can therefore happen after [your package's deserializers](/behind-atom/sections/serialization-in-atom/#serialization-methods) have been called), `initialize()` is guaranteed to be called before everything. Use `activate()` if you want to be sure that the workspace is ready; use `initialize()` if you need to do some setup prior to your deserializers or view providers being invoked.
+- `serialize()`: This **optional** method is called when the window is shutting down, allowing you to return JSON to represent the state of your component. When the window is later restored, the data you returned is passed to your module's `activate` method so you can restore your view to where the user left
+  off.
+- `deactivate()`: This **optional** method is called when the window is shutting down and when the package is disabled. If your package is watching any files or holding external resources in any other way, release them here. You should also dispose of all subscriptions you're holding on to.
 
 ##### Style Sheets
 
@@ -261,16 +263,15 @@ The second file is a View class, `lib/your-name-word-count-view.js`, which handl
 
 ```javascript
 export default class YourNameWordCountView {
-
   constructor(serializedState) {
     // Create root element
-    this.element = document.createElement('div');
-    this.element.classList.add('your-name-word-count');
+    this.element = document.createElement("div");
+    this.element.classList.add("your-name-word-count");
 
     // Create message element
-    const message = document.createElement('div');
-    message.textContent = 'The YourNameWordCount package is Alive! It\'s ALIVE!';
-    message.classList.add('message');
+    const message = document.createElement("div");
+    message.textContent = "The YourNameWordCount package is Alive! It's ALIVE!";
+    message.classList.add("message");
     this.element.appendChild(message);
   }
 
@@ -285,9 +286,7 @@ export default class YourNameWordCountView {
   getElement() {
     return this.element;
   }
-
 }
-
 ```
 
 Basically the only thing happening here is that when the View class is created, it creates a simple `div` element and adds the `your-name-word-count` class to it (so we can find or style it later) and then adds the "`Your Name Word Count package is Alive!`" text to it. There is also a `getElement` method which returns that `div`. The `serialize` and `destroy` methods don't do anything and we won't have to worry about that until another example.
@@ -297,29 +296,32 @@ Notice that we're simply using the basic browser DOM methods: `createElement()` 
 The second file we have is the main entry point to the package. Again, because it's referenced in the `package.json` file. Let's take a look at that file.
 
 ```javascript
-import YourNameWordCountView from './your-name-word-count-view';
-import { CompositeDisposable } from 'atom';
+import YourNameWordCountView from "./your-name-word-count-view";
+import { CompositeDisposable } from "atom";
 
 export default {
-
   yourNameWordCountView: null,
   modalPanel: null,
   subscriptions: null,
 
   activate(state) {
-    this.yourNameWordCountView = new YourNameWordCountView(state.yourNameWordCountViewState);
+    this.yourNameWordCountView = new YourNameWordCountView(
+      state.yourNameWordCountViewState,
+    );
     this.modalPanel = atom.workspace.addModalPanel({
       item: this.yourNameWordCountView.getElement(),
-      visible: false
+      visible: false,
     });
 
     // Events subscribed to in atom's system can be easily cleaned up with a CompositeDisposable
     this.subscriptions = new CompositeDisposable();
 
     // Register command that toggles this view
-    this.subscriptions.add(atom.commands.add('atom-workspace', {
-      'your-name-word-count:toggle': () => this.toggle()
-    }));
+    this.subscriptions.add(
+      atom.commands.add("atom-workspace", {
+        "your-name-word-count:toggle": () => this.toggle(),
+      }),
+    );
   },
 
   deactivate() {
@@ -330,23 +332,20 @@ export default {
 
   serialize() {
     return {
-      yourNameWordCountViewState: this.yourNameWordCountView.serialize()
+      yourNameWordCountViewState: this.yourNameWordCountView.serialize(),
     };
   },
 
   toggle() {
-    console.log('YourNameWordCount was toggled!');
-    return (
-      this.modalPanel.isVisible() ?
-      this.modalPanel.hide() :
-      this.modalPanel.show()
-    );
-  }
-
+    console.log("YourNameWordCount was toggled!");
+    return this.modalPanel.isVisible()
+      ? this.modalPanel.hide()
+      : this.modalPanel.show();
+  },
 };
 ```
 
-There is a bit more going on here.  First of all we can see that we are defining four methods. The only required one is `activate`. The `deactivate` and `serialize` methods are expected by Atom but optional. The `toggle` method is one Atom is not looking for, so we'll have to invoke it somewhere for it to be called, which you may recall we do both in the `activationCommands` section of the `package.json` file and in the action we have in the menu file.
+There is a bit more going on here. First of all we can see that we are defining four methods. The only required one is `activate`. The `deactivate` and `serialize` methods are expected by Atom but optional. The `toggle` method is one Atom is not looking for, so we'll have to invoke it somewhere for it to be called, which you may recall we do both in the `activationCommands` section of the `package.json` file and in the action we have in the menu file.
 
 The `deactivate` method simply destroys the various class instances we've created and the `serialize` method simply passes on the serialization to the View class. Nothing too exciting here.
 
@@ -355,10 +354,12 @@ The `activate` command does a number of things. For one, it is not called automa
 This method does two things. The first is that it creates an instance of the View class we have and adds the element that it creates to a hidden modal panel in the Atom workspace.
 
 ```javascript
-this.yourNameWordCountView = new YourNameWordCountView(state.yourNameWordCountViewState);
+this.yourNameWordCountView = new YourNameWordCountView(
+  state.yourNameWordCountViewState,
+);
 this.modalPanel = atom.workspace.addModalPanel({
   item: this.yourNameWordCountView.getElement(),
-  visible: false
+  visible: false,
 });
 ```
 
@@ -371,9 +372,11 @@ The next thing this method does is create an instance of the CompositeDisposable
 this.subscriptions = new CompositeDisposable();
 
 // Register command that toggles this view
-this.subscriptions.add(atom.commands.add('atom-workspace', {
-  'your-name-word-count:toggle': () => this.toggle()
-}));
+this.subscriptions.add(
+  atom.commands.add("atom-workspace", {
+    "your-name-word-count:toggle": () => this.toggle(),
+  }),
+);
 ```
 
 Next we have the `toggle` method. This method simply toggles the visibility of the modal panel that we created in the `activate` method.
@@ -417,7 +420,7 @@ So, let's review the actual flow in this package.
 
 So now that we understand what is happening, let's modify the code so that our little modal box shows us the current word count instead of static text.
 
-We'll do this in a very simple way. When the dialog is toggled, we'll count the words right before displaying the modal. So let's do this in the `toggle` command.  If we add some code to count the words and ask the view to update itself, we'll have something like this:
+We'll do this in a very simple way. When the dialog is toggled, we'll count the words right before displaying the modal. So let's do this in the `toggle` command. If we add some code to count the words and ask the view to update itself, we'll have something like this:
 
 ```javascript
 toggle() {
